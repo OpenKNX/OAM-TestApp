@@ -38,3 +38,12 @@
     // #define KNX_UART_TX_PIN 1
     #define HARDWARE_NAME "KONNEKTING-TEST"
 #endif
+
+#ifdef ARDUINO_ARCH_ESP32
+    #define PROG_LED_PIN 1
+    #define PROG_LED_PIN_ACTIVE_ON LOW
+    #define PROG_BUTTON_PIN 0
+    #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
+    #define SAVE_INTERRUPT_PIN 9 
+    #define HARDWARE_NAME "ESP32"
+#endif
