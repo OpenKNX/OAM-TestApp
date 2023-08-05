@@ -13,20 +13,30 @@
         <!-- If you just want to have a BUGFIX-Update of the ETS-Appliation (without firmware), increase ApplicationVersion AND ApplicationRevision simultaneously -->
         <!-- To sync ETS-Application and firmware again, increase ApplicationVersion AND set ApplicationRevision to 0 -->
         <op:version OpenKnxId="0xFF" ApplicationNumber="255" ApplicationVersion="0" ReplacesVersions="0" ApplicationRevision="0" />
-        <ApplicationProgram Id="%AID%" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="OpenKNX-Dummy" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ApplicationNumber="0" ApplicationVersion="0" ReplacesVersions="0">
+        <ApplicationProgram Id="%AID%" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="OpenKNX-Dummy" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ContextHelpFile="%FILE-HELP-de%" IconFile="%FILE-ICONS%" ApplicationNumber="0" ApplicationVersion="0" ReplacesVersions="0">
           <Static>
             <Code>
-              <RelativeSegment Id="%AID%_RS-04-00000" Name="Parameters" Offset="0" Size="1" LoadStateMachine="4" />
+              <RelativeSegment Id="%AID%_RS-04-00000" Name="Parameters" Offset="0" Size="%MemorySize%" LoadStateMachine="4" />
             </Code>
+            <op:define prefix="DMY" header="DummyModule.h" NumChannels="0" KoOffset="100" ModuleType="1" />
             <ParameterTypes>
+              <op:include href="DummyModule.share.xml" xpath="//ParameterTypes/ParameterType" prefix="DMY" />
             </ParameterTypes>
             <Parameters>
+              <op:include href="DummyModule.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="DMY" />
+              <op:include href="DummyModule.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="DMY" />
             </Parameters>
             <ParameterRefs>
+              <op:include href="DummyModule.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="DMY" />
+              <op:include href="DummyModule.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="DMY" />
             </ParameterRefs>
             <ComObjectTable>
+              <op:include href="DummyModule.share.xml" xpath="//ComObjectTable/ComObject" prefix="DMY" />
+              <op:include href="DummyModule.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="DMY" />
             </ComObjectTable>
             <ComObjectRefs>
+              <op:include href="DummyModule.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="DMY" />
+              <op:include href="DummyModule.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="DMY" />
             </ComObjectRefs>
             <AddressTable MaxEntries="2047" />
             <AssociationTable MaxEntries="2047" />
@@ -37,11 +47,11 @@
                 </LdCtrlCompareProp>
               </LoadProcedure>
               <LoadProcedure MergeId="2">
-                <LdCtrlRelSegment LsmIdx="4" Size="1" Mode="1" Fill="0" AppliesTo="full" />
-                <LdCtrlRelSegment LsmIdx="4" Size="1" Mode="0" Fill="0" AppliesTo="par" />
+                <LdCtrlRelSegment LsmIdx="4" Size="%MemorySize%" Mode="1" Fill="0" AppliesTo="full" />
+                <LdCtrlRelSegment LsmIdx="4" Size="%MemorySize%" Mode="0" Fill="0" AppliesTo="par" />
               </LoadProcedure>
               <LoadProcedure MergeId="4">
-                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="1" Verify="true" AppliesTo="full,par" />
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="%MemorySize%" Verify="true" AppliesTo="full,par" />
               </LoadProcedure>
               <LoadProcedure MergeId="7">
                 <LdCtrlLoadImageProp ObjIdx="1" PropId="27" />
@@ -56,9 +66,22 @@
             <Options />
           </Static>
           <Dynamic>
+            <ChannelIndependentBlock>
+              <!-- ChannelIndependentBlock is a composition of different parts of different modules -->
+              <ParameterBlock Id="%AID%_PB-1" Name="General" Text="Allgemeine Parameter" Icon="application-cog-outline" HelpContext="Empty">
+              <!-- DMY channel independent settings -->
+              <op:include href="DummyModule.share.xml" xpath="//Dynamic/Channel/*" prefix="DMY" />
+              <!-- DMY channel settings -->
+              <op:include href="DummyModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DMY" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
+      <Baggages>
+        <op:include href="DummyModule.share.xml" xpath="//Baggages/*" prefix="DMY" />
+        <op:include href="../../OGM-Common/src/Common.share.xml" xpath="//Baggages/*" prefix="LOG" />
+      </Baggages>
       <Hardware>
         <Hardware Id="%HardwareId%" Name="OpenKNX-DummyModule" SerialNumber="0xFFFF" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
           <Products>

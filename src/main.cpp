@@ -5,6 +5,10 @@
     #include "UpdaterModule.h"
 #endif
 
+uint32_t x1 = 0;
+uint8_t x2 = 0;
+OpenKNX::Flash::Driver *test = nullptr;
+
 void setup()
 {
     const uint8_t firmwareRevision = 1;
@@ -17,16 +21,21 @@ void setup()
     openknx.setup();
 #ifdef ARDUINO_ARCH_ESP32
     logInfo("Flash", "Size %i", spi_flash_get_chip_size());
-    OpenKNX::Flash::Driver *test = new OpenKNX::Flash::Driver(0x2b0000, 0x2000, "Test");
-    test->write(0x1000, 0x60, 1);
-    test->commit();
-    logHexInfo("Flash1", test->flashAddress(), 512);
-    logHexInfo("Flash2", test->flashAddress() + 0x1000, 512);
+    test = new OpenKNX::Flash::Driver(0x2b0000, 0x2000, "Test");
+    test->eraseSector(0);
 #endif
 }
 
 void loop()
 {
+    // if (delayCheck(x1, 5000))
+    // {
+    //     x1 = millis();
+    //     test->write(x2 , (uint8_t)x1, 1);
+    //     test->commit();
+    //     logHexInfo("FlashContent", test->flashAddress(), 256);
+    //     x2 += 1;
+    // }
     openknx.loop();
 }
 
