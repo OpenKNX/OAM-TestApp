@@ -18,25 +18,35 @@
             <Code>
               <RelativeSegment Id="%AID%_RS-04-00000" Name="Parameters" Offset="0" Size="%MemorySize%" LoadStateMachine="4" />
             </Code>
-            <op:define prefix="DMY" header="DummyModule.h" NumChannels="0" KoOffset="100" ModuleType="1" />
+            <op:define prefix="DMY" header="../include/knxprod.h" NumChannels="0" KoOffset="40" ModuleType="2" />
+            <op:define prefix="LOG" header="../include/knxprod.h" NumChannels="30" KoOffset="200" ModuleType="1" />
             <ParameterTypes>
               <op:include href="DummyModule.share.xml" xpath="//ParameterTypes/ParameterType" prefix="DMY" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
             </ParameterTypes>
             <Parameters>
               <op:include href="DummyModule.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="DMY" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="LOG" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="LOG" />
             </Parameters>
             <ParameterRefs>
               <op:include href="DummyModule.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="DMY" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="LOG" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="LOG" />
             </ParameterRefs>
             <ComObjectTable>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectTable/ComObject" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="DMY" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectTable/ComObject" prefix="LOG" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="LOG" />
             </ComObjectTable>
             <ComObjectRefs>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="DMY" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="LOG" />
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="LOG" />
             </ComObjectRefs>
             <AddressTable MaxEntries="2047" />
             <AssociationTable MaxEntries="2047" />
@@ -69,12 +79,18 @@
             <ChannelIndependentBlock>
               <!-- ChannelIndependentBlock is a composition of different parts of different modules -->
               <ParameterBlock Id="%AID%_PB-1" Name="General" Text="Allgemeine Parameter" Icon="application-cog-outline" HelpContext="Empty">
-              <!-- DMY channel independent settings -->
-              <op:include href="DummyModule.share.xml" xpath="//Dynamic/Channel/*" prefix="DMY" />
-              <!-- DMY channel settings -->
-              <op:include href="DummyModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DMY" />
+                <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Init']/*" prefix="SOM" /> -->
+                <op:include href="../../OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
+                <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Hardware']/*" prefix="SOM" /> -->
+                <op:include href="../../OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
               </ParameterBlock>
             </ChannelIndependentBlock>
+            <Channel Name="Logikkanaele" Text="Logikkanäle" Number="5" Id="%AID%_CH-5" Icon="router">
+              <!-- compose logicmodule channel from some static blocks... -->
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//Dynamic/Channel/*" prefix="LOG" />
+              <!-- followed by all logic channels -->
+              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="LOG" />
+            </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>

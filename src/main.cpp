@@ -1,4 +1,5 @@
 #include "DummyModule.h"
+#include "Logic.h"
 #include "OpenKNX.h"
 
 #ifdef ARDUINO_ARCH_RP2040
@@ -13,7 +14,7 @@ void setup()
 {
     const uint8_t firmwareRevision = 1;
     openknx.init(firmwareRevision);
-    // openknx.addModule(1, new Logic());
+    openknx.addModule(1, new Logic());
     openknx.addModule(2, new DummyModule());
 #ifdef ARDUINO_ARCH_RP2040
     openknx.addModule(9, new UpdaterModule());
