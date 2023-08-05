@@ -1,6 +1,5 @@
 #include "DummyModule.h"
 #include "OpenKNX.h"
-#include <Arduino.h>
 
 #ifdef ARDUINO_ARCH_RP2040
     #include "UpdaterModule.h"
