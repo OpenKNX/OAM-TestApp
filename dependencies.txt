@@ -1,5 +1,5 @@
 ------- Built with -------
-f7ac39c master lib/knx https://github.com/OpenKNX/knx.git
+2934782 fix-check-init-of-assoc-table lib/knx https://github.com/OpenKNX/knx.git
 73cac2f modular lib/OFM-LogicModule https://github.com/OpenKNX/OFM-LogicModule.git
 0fa5d39 main lib/OFM-Updater https://github.com/OpenKNX/OFM-Updater.git
-991285e moduar_ini2 lib/OGM-Common https://github.com/OpenKNX/OGM-Common.git
+c4ac9ec moduar_ini2 lib/OGM-Common https://github.com/OpenKNX/OGM-Common.git

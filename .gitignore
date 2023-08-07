@@ -8,3 +8,4 @@
 **/*.debug.xml
 release/*
 src/*Baggages
+compile_commands.json

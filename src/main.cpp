@@ -8,7 +8,7 @@
 
 uint32_t x1 = 0;
 uint8_t x2 = 0;
-OpenKNX::Flash::Driver *test = nullptr;
+// OpenKNX::Flash::Driver other(OTHER_FLASH_OFFSET, OTHER_FLASH_SIZE, "Other");
 
 void setup()
 {
@@ -20,23 +20,24 @@ void setup()
     openknx.addModule(9, new UpdaterModule());
 #endif
     openknx.setup();
-#ifdef ARDUINO_ARCH_ESP32
-    logInfo("Flash", "Size %i", spi_flash_get_chip_size());
-    test = new OpenKNX::Flash::Driver(0x2b0000, 0x2000, "Test");
-    test->eraseSector(0);
-#endif
-}
 
+    // openknx.progLed.off();
+    // openknx.progLed.on();
+    // openknx.progLed.blinking();
+    openknx.progLed.pulsing();
+}
+// bool d = false;
 void loop()
 {
-    // if (delayCheck(x1, 5000))
-    // {
-    //     x1 = millis();
-    //     test->write(x2 , (uint8_t)x1, 1);
-    //     test->commit();
-    //     logHexInfo("FlashContent", test->flashAddress(), 256);
-    //     x2 += 1;
-    // }
+    if (delayCheck(x1, 10000))
+    {
+        x1 = millis();
+        // openknx.flashOpenKNX.write(0, 0x10, 100);
+        // openknx.flashOpenKNX.write(10, 0x20, 80);
+        // openknx.flashOpenKNX.commit();
+        // logHexInfo("FlashContent", openknx.flashOpenKNX.flashAddress(), 256);
+    }
+
     openknx.loop();
 }
 
