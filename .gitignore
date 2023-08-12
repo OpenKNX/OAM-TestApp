@@ -9,3 +9,4 @@
 release/*
 src/*Baggages
 compile_commands.json
+include/versions.h
