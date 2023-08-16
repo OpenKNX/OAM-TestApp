@@ -8,7 +8,6 @@
 
 uint32_t x1 = 0;
 uint8_t x2 = 0;
-// OpenKNX::Flash::Driver other(OTHER_FLASH_OFFSET, OTHER_FLASH_SIZE, "Other");
 
 void setup()
 {
@@ -29,16 +28,6 @@ void setup()
 
 void loop()
 {
-#ifdef ARDUINO_ARCH_ESP32
-    // if (delayCheck(x1, 5000))
-    // {
-    //     x1 = millis();
-    //     other->write(x2 , (uint8_t)x1, 1);
-    //     other->commit();
-    //     logHexInfo("FlashContent", other->flashAddress(), 256);
-    //     x2 += 1;
-    // }
-#endif
     openknx.loop();
 }
 

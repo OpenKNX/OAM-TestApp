@@ -146,9 +146,9 @@
             "type": "shell",
             "command": "scripts/Build-Release.ps1", 
             "args": [
-                "Release"
             ],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": "test"
         }
 	]
 }
