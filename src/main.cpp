@@ -3,7 +3,6 @@
 #include "OpenKNX.h"
 
 #ifdef ARDUINO_ARCH_RP2040
-    #include "UpdaterModule.h"
     #include "FileTransferModule.h"
 #endif
 
@@ -12,20 +11,19 @@ uint8_t x2 = 0;
 
 void setup()
 {
-    const uint8_t firmwareRevision = 4;
+    const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
     openknx.addModule(1, new Logic());
     openknx.addModule(2, new DummyModule());
 #ifdef ARDUINO_ARCH_RP2040
-    openknx.addModule(8, new UpdaterModule());
     openknx.addModule(9, new FileTransferModule());
 #endif
     openknx.setup();
 
     // openknx.progLed.off();
     // openknx.progLed.on();
-    // openknx.progLed.blinking();
-    openknx.progLed.pulsing();
+    openknx.progLed.blinking();
+    //openknx.progLed.pulsing();
 }
 
 void loop()
