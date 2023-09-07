@@ -10,11 +10,11 @@
                                              
 #define MAIN_OpenKnxId 0xFF
 #define MAIN_ApplicationNumber 255
-#define MAIN_ApplicationVersion 1
+#define MAIN_ApplicationVersion 2
 #define MAIN_ParameterSize 2606
 #define MAIN_MaxKoNumber 289
 #define MAIN_OrderNumber "DUMMY"
-#define LOG_ModuleVersion 21
+#define LOG_ModuleVersion 32
 // Parameter with single occurrence
 
 
