@@ -11,7 +11,7 @@ uint8_t x2 = 0;
 
 void setup()
 {
-    const uint8_t firmwareRevision = 0;
+    const uint8_t firmwareRevision = 2;
     openknx.init(firmwareRevision);
     openknx.addModule(1, new Logic());
     openknx.addModule(2, new DummyModule());
