@@ -25,7 +25,6 @@ class DummyModule : public OpenKNX::Module
     void setup1(bool configured) override;
 #endif
     const std::string name() override;
-    const std::string version() override;
     void processInputKo(GroupObject &ko) override;
     bool processCommand(const std::string cmd, bool diagnoseKo);
     void showHelp() override;

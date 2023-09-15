@@ -7,11 +7,6 @@ const std::string DummyModule::name()
     return "Dummy";
 }
 
-const std::string DummyModule::version()
-{
-    return MAIN_Version;
-}
-
 void DummyModule::setup(bool configured)
 {
     delay(1000);
