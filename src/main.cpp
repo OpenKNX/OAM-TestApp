@@ -6,8 +6,8 @@
     #include "FileTransferModule.h"
 #endif
 
-uint32_t x1 = 0;
-uint8_t x2 = 0;
+uint32_t _debugCore0 = 0;
+uint32_t _debugCore1 = 0;
 
 void setup()
 {
@@ -23,12 +23,14 @@ void setup()
     // openknx.progLed.off();
     // openknx.progLed.on();
     openknx.progLed.blinking();
-    //openknx.progLed.pulsing();
+    // openknx.progLed.pulsing();
+
 }
 
 void loop()
 {
     openknx.loop();
+    _debugCore0 = millis();
 }
 
 #ifdef OPENKNX_DUALCORE
@@ -40,5 +42,6 @@ void setup1()
 void loop1()
 {
     openknx.loop1();
+    _debugCore1 = millis();
 }
 #endif
