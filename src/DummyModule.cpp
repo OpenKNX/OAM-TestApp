@@ -7,6 +7,12 @@ const std::string DummyModule::name()
     return "Dummy";
 }
 
+const std::string DummyModule::version()
+{
+    // hides the module in the version output on the console, because the firmware version is sufficient.
+    return "";
+}
+
 void DummyModule::setup(bool configured)
 {
     delay(1000);
