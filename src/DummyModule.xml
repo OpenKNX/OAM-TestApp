@@ -12,7 +12,7 @@
         <!-- Each increase of AppliationVersion FORCES the Enduser to update according firmware, too -->
         <!-- If you just want to have a BUGFIX-Update of the ETS-Appliation (without firmware), increase ApplicationVersion AND ApplicationRevision simultaneously -->
         <!-- To sync ETS-Application and firmware again, increase ApplicationVersion AND set ApplicationRevision to 0 -->
-        <op:version OpenKnxId="0xFF" ApplicationNumber="255" ApplicationVersion="2" ReplacesVersions="0 1" ApplicationRevision="0" />
+        <op:version OpenKnxId="0xFF" ApplicationNumber="255" ApplicationVersion="4" ReplacesVersions="0 1 2 3" ApplicationRevision="0" />
         <ApplicationProgram Id="%AID%" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="OpenKNX-Dummy" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ContextHelpFile="%FILE-HELP-de%" IconFile="%FILE-ICONS%" ApplicationNumber="0" ApplicationVersion="0" ReplacesVersions="0">
           <Static>
             <Code>
@@ -20,35 +20,47 @@
             </Code>
             <op:define prefix="DMY" header="../include/knxprod.h" NumChannels="0" KoOffset="40" ModuleType="2" />
             <op:define prefix="LOG" header="../include/knxprod.h" NumChannels="30" KoOffset="200" ModuleType="1">
-              <op:verify File="../lib/OFM-LogicModule/src/ModuleVersion.h" ModuleVersion="32" />
+              <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="32" />
+            </op:define>
+            <op:define prefix="BTN" header="../include/knxprod.h" NumChannels="30" KoOffset="350" ModuleType="3">
+              <op:verify File="../lib/OFM-VirtualButton/library.json" ModuleVersion="3" />
             </op:define>
             <ParameterTypes>
               <op:include href="DummyModule.share.xml" xpath="//ParameterTypes/ParameterType" prefix="DMY" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ParameterTypes/ParameterType" prefix="BTN" />
             </ParameterTypes>
             <Parameters>
               <op:include href="DummyModule.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="DMY" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="LOG" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="BTN" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="BTN" />
             </Parameters>
             <ParameterRefs>
               <op:include href="DummyModule.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="DMY" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="LOG" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="BTN" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="BTN" />
             </ParameterRefs>
             <ComObjectTable>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectTable/ComObject" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="DMY" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectTable/ComObject" prefix="LOG" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectTable/ComObject" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ComObjectTable/ComObject" prefix="BTN" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="BTN" />
             </ComObjectTable>
             <ComObjectRefs>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="DMY" />
               <op:include href="DummyModule.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="DMY" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="LOG" />
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="BTN" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="BTN" />
             </ComObjectRefs>
             <AddressTable MaxEntries="2047" />
             <AssociationTable MaxEntries="2047" />
@@ -82,23 +94,28 @@
               <!-- ChannelIndependentBlock is a composition of different parts of different modules -->
               <ParameterBlock Id="%AID%_PB-1" Name="General" Text="Allgemeine Parameter" Icon="application-cog-outline" HelpContext="Empty">
                 <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Init']/*" prefix="SOM" /> -->
-                <op:include href="../../OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
+                <op:include href="../lib/OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
                 <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Hardware']/*" prefix="SOM" /> -->
-                <op:include href="../../OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
+                <op:include href="../lib/OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
               </ParameterBlock>
             </ChannelIndependentBlock>
+            <Channel Name="BTN" Text="Virtuelle Taster" Number="6" Id="%AID%_CH-6" Icon="button-pointer">
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Dynamic/Channel/*" prefix="BTN" />
+              <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="BTN" />
+            </Channel>
             <Channel Name="Logikkanaele" Text="Logikkanäle" Number="5" Id="%AID%_CH-5" Icon="router">
               <!-- compose logicmodule channel from some static blocks... -->
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.share.xml" xpath="//Dynamic/Channel/*" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//Dynamic/Channel/*" prefix="LOG" />
               <!-- followed by all logic channels -->
-              <op:include href="../../OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="LOG" />
+              <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="LOG" />
             </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
       <Baggages>
         <op:include href="DummyModule.share.xml" xpath="//Baggages/*" prefix="DMY" />
-        <op:include href="../../OGM-Common/src/Common.share.xml" xpath="//Baggages/*" prefix="LOG" />
+        <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//Baggages/*" prefix="LOG" />
+        <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Baggages/*" prefix="BTN" />
       </Baggages>
       <Hardware>
         <Hardware Id="%HardwareId%" Name="OpenKNX-DummyModule" SerialNumber="0xFFFF" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">

@@ -1,6 +1,7 @@
 #include "DummyModule.h"
 #include "Logic.h"
 #include "OpenKNX.h"
+#include "VirtualButtonModule.h"
 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
@@ -11,10 +12,11 @@ uint32_t _debugCore1 = 0;
 
 void setup()
 {
-    const uint8_t firmwareRevision = 2;
+    const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
     openknx.addModule(1, new Logic());
     openknx.addModule(2, new DummyModule());
+    openknx.addModule(3, new VirtualButtonModule());
 #ifdef ARDUINO_ARCH_RP2040
     openknx.addModule(9, new FileTransferModule());
 #endif
@@ -24,7 +26,6 @@ void setup()
     // openknx.progLed.on();
     openknx.progLed.blinking();
     // openknx.progLed.pulsing();
-
 }
 
 void loop()
