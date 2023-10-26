@@ -16,6 +16,22 @@
             "group": "test"
         },
         {
+            "label": "OpenKNXproducer (Beta)",
+            "type": "shell",
+            "command": "~/bin/OpenKNXproducer.exe",
+            "args": [
+                "create",
+                "--Debug",
+                "-h",
+                "include/knxprod.h",
+                "-c",
+                "src/Beta.xml",
+                "src/DummyModule"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
             "label": "Generate Dependencies.txt",
             "type": "shell",
             "command": "lib/OGM-Common/scripts/setup/reusable/Build-Dependencies.ps1",
