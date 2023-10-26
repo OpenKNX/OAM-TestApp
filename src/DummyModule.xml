@@ -115,7 +115,7 @@
               <!-- followed by all logic channels -->
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="LOG" />
             </Channel>
-            <Channel Name="%Dummy_ChannelName%" Text="%Dummy_ChannelText%" Number="7" Id="%AID%_CH-7" Icon="%Dummy_ChannelIcon%">
+            <Channel Name="%DMY-ChannelName%" Text="%DMY-ChannelText%" Number="7" Id="%AID%_CH-7" Icon="%DMY-ChannelIcon%">
               <ParameterBlock Id="%AID%_PB-7" Name="Basic" Text="Grundeinstellung" Icon="cog-outline" HelpContext="Empty"></ParameterBlock>
             </Channel>
           </Dynamic>
