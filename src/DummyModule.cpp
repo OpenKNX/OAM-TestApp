@@ -129,3 +129,5 @@ bool DummyModule::processCommand(const std::string cmd, bool diagnoseKo)
 
     return false;
 }
+
+DummyModule openknxDummyModule;
