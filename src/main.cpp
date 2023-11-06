@@ -5,6 +5,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
+    #include "UsbExchangeModule.h"
 #endif
 
 uint32_t _debugCore0 = 0;
@@ -18,6 +19,7 @@ void setup()
     openknx.addModule(2, openknxDummyModule);
     openknx.addModule(3, openknxVirtualButtonModule);
 #ifdef ARDUINO_ARCH_RP2040
+    openknx.addModule(8, openknxUsbExchangeModule);
     openknx.addModule(9, openknxFileTransferModule);
 #endif
     openknx.setup();

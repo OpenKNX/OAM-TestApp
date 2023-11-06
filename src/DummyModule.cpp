@@ -99,7 +99,7 @@ void DummyModule::loop1(bool configured)
 }
 #endif
 
-void DummyModule::processInputKo(GroupObject &ko)
+void DummyModule::processInputKo(GroupObject& ko)
 {
     logDebugP("processInputKo GA%04X", ko.asap());
     logHexDebugP(ko.valueRef(), ko.valueSize());
@@ -128,6 +128,23 @@ bool DummyModule::processCommand(const std::string cmd, bool diagnoseKo)
     }
 
     return false;
+}
+
+void DummyModule::registerUsbExchangeCallbacks()
+{
+    // Sample
+    openknxUsbExchangeModule.onLoad("Dummy.txt", [](UsbExchangeFile* file) -> void {
+        file->write("Demo");
+    });
+    openknxUsbExchangeModule.onEject("Dummy.txt", [](UsbExchangeFile* file) -> bool {
+        // File is required
+        if (file == nullptr)
+        {
+            logError("DummyModule", "File Dummy.txt was deleted but is mandatory");
+            return false;
+        }
+        return true;
+    });
 }
 
 DummyModule openknxDummyModule;
