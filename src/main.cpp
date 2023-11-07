@@ -10,6 +10,7 @@
 
 uint32_t _debugCore0 = 0;
 uint32_t _debugCore1 = 0;
+bool func1test = false;
 
 void setup()
 {
@@ -23,6 +24,14 @@ void setup()
     openknx.addModule(9, openknxFileTransferModule);
 #endif
     openknx.setup();
+
+#ifdef FUNC1_BUTTON_PIN
+    openknx.func1Button.onShortClick([]() -> void {
+        func1test = !func1test;
+        openknx.info2Led.on(func1test);
+        openknx.info1Led.on(!func1test);
+    });
+#endif
 
     // openknx.progLed.off();
     // openknx.progLed.on();
