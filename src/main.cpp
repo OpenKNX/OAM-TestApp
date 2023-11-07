@@ -29,7 +29,7 @@ void setup()
     openknx.func1Button.onShortClick([]() -> void {
         func1test = !func1test;
         openknx.info2Led.on(func1test);
-        openknx.info1Led.on(!func1test);
+        openknx.info3Led.on(!func1test);
     });
 #endif
 
