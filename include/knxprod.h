@@ -9,8 +9,8 @@
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
 #define MAIN_OpenKnxId 0xFF
-#define MAIN_ApplicationNumber 255
-#define MAIN_ApplicationVersion 4
+#define MAIN_ApplicationNumber 254
+#define MAIN_ApplicationVersion 0
 #define MAIN_ParameterSize 4140
 #define MAIN_MaxKoNumber 709
 #define MAIN_OrderNumber "DUMMY"

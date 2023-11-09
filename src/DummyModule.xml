@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
-  <op:config name="%DeviceName%" value="Dummy"/>
+  <op:config name="%DeviceName%" value="DummyIP"/>
   <op:config name="%BuildSuffix%" value=""/>
   <op:config name="%BuildLabelSuffix%" value=""/>
-  <op:config name="%ApplicationNumber%" value="255"/>
-  <op:config name="%ApplicationVersion%" value="4"/>
-  <op:config name="%ApplicationVersionReplaces%" value="0 1 2 3"/>
+  <op:config name="%ApplicationNumber%" value="254"/>
+  <op:config name="%ApplicationVersion%" value="0"/>
+  <op:config name="%ApplicationVersionReplaces%" value=""/>
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
       <Catalog>
@@ -127,10 +127,11 @@
         <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Baggages/*" prefix="BTN" />
       </Baggages>
       <Hardware>
-        <Hardware Id="%HardwareId%" Name="OpenKNX-%DeviceName%%BuildSuffix%" SerialNumber="0xFFFF" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+        <Hardware Id="%HardwareId%" Name="OpenKNX-%DeviceName%%BuildSuffix%" SerialNumber="0xFFFE" VersionNumber="1" BusCurrent="30" HasIndividualAddress="true" HasApplicationProgram="true" IsIPEnabled="1">
           <Products>
             <Product Id="%ProductId%" Text="OpenKNX: %DeviceName%%BuildLabelSuffix%" OrderNumber="DUMMY" IsRailMounted="false" DefaultLanguage="de">
               <RegistrationInfo RegistrationStatus="Registered" />
+              
             </Product>
           </Products>
           <Hardware2Programs>
