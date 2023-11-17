@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
-  <op:config name="%DeviceName%" value="DummyIP"/>
+  <op:config name="%DeviceName%" value="Dummy"/>
+  <op:config name="%MediaTypeNumber%" value="0"/>
   <op:config name="%BuildSuffix%" value=""/>
   <op:config name="%BuildLabelSuffix%" value=""/>
-  <op:config name="%ApplicationNumber%" value="254"/>
-  <op:config name="%ApplicationVersion%" value="0"/>
-  <op:config name="%ApplicationVersionReplaces%" value=""/>
+  <op:config name="%ApplicationNumber%" value="255"/>
+  <op:config name="%ApplicationVersion%" value="7"/>
+  <op:config name="%ApplicationVersionReplaces%" value="0 1 2 3 4 5 6"/>
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
       <Catalog>
@@ -19,12 +20,13 @@
         <!-- If you just want to have a BUGFIX-Update of the ETS-Appliation (without firmware), increase ApplicationVersion AND ApplicationRevision simultaneously -->
         <!-- To sync ETS-Application and firmware again, increase ApplicationVersion AND set ApplicationRevision to 0 -->
         <op:version OpenKnxId="0xFF" ApplicationNumber="%ApplicationNumber%" ApplicationVersion="%ApplicationVersion%" ReplacesVersions="%ApplicationVersionReplaces%" ApplicationRevision="0" />
-        <ApplicationProgram Id="%AID%" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="OpenKNX-%DeviceName%%BuildSuffix%" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ContextHelpFile="%FILE-HELP-de%" IconFile="%FILE-ICONS%" ApplicationNumber="0" ApplicationVersion="0" ReplacesVersions="0">
+        <ApplicationProgram IPConfig="Custom" Id="%AID%" ProgramType="ApplicationProgram" MaskVersion="MV-%MediaTypeNumber%7B0" Name="OpenKNX-%DeviceName%%BuildSuffix%" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ContextHelpFile="%FILE-HELP-de%" IconFile="%FILE-ICONS%" ApplicationNumber="0" ApplicationVersion="0" ReplacesVersions="0">
           <Static>
             <Code>
               <RelativeSegment Id="%AID%_RS-04-00000" Name="Parameters" Offset="0" Size="%MemorySize%" LoadStateMachine="4" />
             </Code>
-            <op:define prefix="DMY" header="../include/knxprod.h" NumChannels="0" KoOffset="40" ModuleType="2" />
+            <op:define prefix="DMY" header="../include/knxprod.h" KoOffset="40" ModuleType="2" />
+            <op:define prefix="NET" header="../include/knxprod.h" KoOffset="0" ModuleType="4" />
             <op:define prefix="LOG" header="../include/knxprod.h" NumChannels="30" KoOffset="200" ModuleType="1">
               <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="32" />
             </op:define>
@@ -35,6 +37,7 @@
               <op:include href="DummyModule.share.xml" xpath="//ParameterTypes/ParameterType" prefix="DMY" />
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ParameterTypes/ParameterType" prefix="BTN" />
+              <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ParameterTypes/ParameterType" prefix="NET" />
             </ParameterTypes>
             <Parameters>
               <op:include href="DummyModule.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="DMY" />
@@ -43,6 +46,7 @@
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="LOG" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="BTN" />
+              <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="NET" />
             </Parameters>
             <ParameterRefs>
               <op:include href="DummyModule.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="DMY" />
@@ -51,6 +55,7 @@
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="LOG" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="BTN" />
+              <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ParameterRefs/ParameterRef" prefix="NET" />
             </ParameterRefs>
             <ComObjectTable>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectTable/ComObject" prefix="DMY" />
@@ -59,6 +64,7 @@
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="LOG" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ComObjectTable/ComObject" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="BTN" />
+              <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ComObjectTable/ComObject" prefix="NET" />
             </ComObjectTable>
             <ComObjectRefs>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="DMY" />
@@ -67,6 +73,7 @@
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="LOG" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="BTN" />
+              <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="NET" />
             </ComObjectRefs>
             <AddressTable MaxEntries="2047" />
             <AssociationTable MaxEntries="2047" />
@@ -104,6 +111,7 @@
                 <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Hardware']/*" prefix="SOM" /> -->
                 <op:include href="../lib/OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
               </ParameterBlock>
+              <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Network']" prefix="NET" />
             </ChannelIndependentBlock>
             <Channel Name="BTN" Text="Virtuelle Taster" Number="6" Id="%AID%_CH-6" Icon="button-pointer">
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Dynamic/Channel/*" prefix="BTN" />
@@ -135,7 +143,7 @@
             </Product>
           </Products>
           <Hardware2Programs>
-            <Hardware2Program Id="%Hardware2ProgramId%" MediumTypes="MT-0">
+            <Hardware2Program Id="%Hardware2ProgramId%" MediumTypes="MT-%MediaTypeNumber%">
               <ApplicationProgramRef RefId="%AID%" />
               <RegistrationInfo RegistrationStatus="Registered" RegistrationNumber="0001/11" />
             </Hardware2Program>

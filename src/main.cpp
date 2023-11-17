@@ -4,14 +4,15 @@
 #include "VirtualButtonModule.h"
 
 #ifdef ARDUINO_ARCH_RP2040
-    #include "NetworkModule.h"
     #include "FileTransferModule.h"
+    #include "NetworkModule.h"
     #include "UsbExchangeModule.h"
 #endif
 
 uint32_t _debugCore0 = 0;
 uint32_t _debugCore1 = 0;
 bool func1test = false;
+bool core1_separate_stack = true;
 
 void setup()
 {
@@ -21,7 +22,7 @@ void setup()
     openknx.addModule(2, openknxDummyModule);
     openknx.addModule(3, openknxVirtualButtonModule);
 #ifdef ARDUINO_ARCH_RP2040
-    openknx.addModule(7, openknxNetworkModule);
+    openknx.addModule(7, openknxNetwork);
     openknx.addModule(8, openknxUsbExchangeModule);
     openknx.addModule(9, openknxFileTransferModule);
 #endif
@@ -35,6 +36,7 @@ void setup()
     });
 #endif
 
+    logInfo("Test", "FreeStack: %i bytes", rp2040.getFreeStack());
     // openknx.progLed.off();
     // openknx.progLed.on();
     // openknx.progLed.blinking();
@@ -51,6 +53,9 @@ void loop()
 void setup1()
 {
     openknx.setup1();
+    logInfo("Test", "FreeStack: %i bytes", rp2040.getFreeStack());
+    // logInfo("Test", "StackPointer: %X   (%i)", rp2040.getStackPointer(), rp2040.separateCore1StackSize);
+    // logInfo("Test", "StackAddress: 0x%X - 0x%X", (rp2040.separateCore1Stack), (rp2040.separateCore1Stack) + rp2040.separateCore1StackSize );
 }
 
 void loop1()

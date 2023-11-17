@@ -10,8 +10,8 @@
                                              
 #define MAIN_OpenKnxId 0xFF
 #define MAIN_ApplicationNumber 254
-#define MAIN_ApplicationVersion 0
-#define MAIN_ParameterSize 4140
+#define MAIN_ApplicationVersion 8
+#define MAIN_ParameterSize 4188
 #define MAIN_MaxKoNumber 709
 #define MAIN_OrderNumber "DUMMY"
 #define LOG_ModuleVersion 32
@@ -2514,4 +2514,44 @@
 #define KoBTN_ChannelOutput5            (knx.getGroupObject(BTN_KoCalcNumber(BTN_KoChannelOutput5)))
 // 
 #define KoBTN_ChannelOutput6            (knx.getGroupObject(BTN_KoCalcNumber(BTN_KoChannelOutput6)))
+
+#define NET_HostAddress               4140      // IP address, 4 Byte
+#define NET_SubnetMask                4144      // IP address, 4 Byte
+#define NET_GatewayAddress            4148      // IP address, 4 Byte
+#define NET_NameserverAddress1        4152      // IP address, 4 Byte
+#define NET_NameserverAddress2        4156      // IP address, 4 Byte
+#define NET_CustomHostname            4160      // 1 Bit, Bit 7
+#define     NET_CustomHostnameMask 0x80
+#define     NET_CustomHostnameShift 7
+#define NET_StaticIP                  4160      // 1 Bit, Bit 6
+#define     NET_StaticIPMask 0x40
+#define     NET_StaticIPShift 6
+#define NET_mDNS                      4160      // 1 Bit, Bit 5
+#define     NET_mDNSMask 0x20
+#define     NET_mDNSShift 5
+#define NET_FTP                       4160      // 1 Bit, Bit 4
+#define     NET_FTPMask 0x10
+#define     NET_FTPShift 4
+#define NET_HostName                  4164      // char*, 24 Byte
+
+//   IP-Adresse
+#define ParamNET_HostAddress               (knx.paramInt(NET_HostAddress))
+//   Subnetzsmaske
+#define ParamNET_SubnetMask                (knx.paramInt(NET_SubnetMask))
+//   Standardgateway
+#define ParamNET_GatewayAddress            (knx.paramInt(NET_GatewayAddress))
+//   Primär
+#define ParamNET_NameserverAddress1        (knx.paramInt(NET_NameserverAddress1))
+//   Sekundär
+#define ParamNET_NameserverAddress2        (knx.paramInt(NET_NameserverAddress2))
+//   Hostname anpassen
+#define ParamNET_CustomHostname            ((bool)(knx.paramByte(NET_CustomHostname) & NET_CustomHostnameMask))
+//   DHCP
+#define ParamNET_StaticIP                  ((bool)(knx.paramByte(NET_StaticIP) & NET_StaticIPMask))
+//   mDNS
+#define ParamNET_mDNS                      ((bool)(knx.paramByte(NET_mDNS) & NET_mDNSMask))
+//   FTP-Server
+#define ParamNET_FTP                       ((bool)(knx.paramByte(NET_FTP) & NET_FTPMask))
+// 
+#define ParamNET_HostName                  (knx.paramData(NET_HostName))
 
