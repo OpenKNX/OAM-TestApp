@@ -27,6 +27,7 @@
             </Code>
             <op:define prefix="DMY" header="../include/knxprod.h" KoOffset="40" ModuleType="2" />
             <op:define prefix="NET" header="../include/knxprod.h" KoOffset="0" ModuleType="4" />
+            <op:define prefix="BASE" header="../include/knxprod.h" KoOffset="0" ModuleType="5" KoSingleOffset="10" />
             <op:define prefix="LOG" header="../include/knxprod.h" NumChannels="30" KoOffset="200" ModuleType="1">
               <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="32" />
             </op:define>
@@ -38,6 +39,7 @@
               <op:include href="../lib/OFM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ParameterTypes/ParameterType" prefix="BTN" />
               <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ParameterTypes/ParameterType" prefix="NET" />
+              <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//ParameterTypes/ParameterType" prefix="BASE" />
             </ParameterTypes>
             <Parameters>
               <op:include href="DummyModule.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="DMY" />
@@ -47,6 +49,7 @@
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="BTN" />
               <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="NET" />
+              <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="BASE" />
             </Parameters>
             <ParameterRefs>
               <op:include href="DummyModule.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="DMY" />
@@ -56,6 +59,7 @@
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="BTN" />
               <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ParameterRefs/ParameterRef" prefix="NET" />
+              <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="BASE" />
             </ParameterRefs>
             <ComObjectTable>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectTable/ComObject" prefix="DMY" />
@@ -65,6 +69,7 @@
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ComObjectTable/ComObject" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="BTN" />
               <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ComObjectTable/ComObject" prefix="NET" />
+              <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//ComObjectTable/ComObject" prefix="BASE" />
             </ComObjectTable>
             <ComObjectRefs>
               <op:include href="DummyModule.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="DMY" />
@@ -74,6 +79,7 @@
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="BTN" />
               <op:include href="../lib/OFM-VirtualButton/src/VirtualButton.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="BTN" />
               <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="NET" />
+              <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="BASE" />
             </ComObjectRefs>
             <AddressTable MaxEntries="2047" />
             <AssociationTable MaxEntries="2047" />
@@ -104,13 +110,7 @@
           </Static>
           <Dynamic>
             <ChannelIndependentBlock>
-              <!-- ChannelIndependentBlock is a composition of different parts of different modules -->
-              <ParameterBlock Id="%AID%_PB-1" Name="General" Text="Allgemeine Parameter" Icon="application-cog-outline" HelpContext="Empty">
-                <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Init']/*" prefix="SOM" /> -->
-                <op:include href="../lib/OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
-                <!-- <op:include href="SoundModule.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Hardware']/*" prefix="SOM" /> -->
-                <op:include href="../lib/OFM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
-              </ParameterBlock>
+              <op:include href="../lib/OGM-Common/src/Common.share.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']" prefix="BASE" />
               <op:include href="../lib/OFM-Network/src/NetworkModule.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Network']" prefix="NET" />
             </ChannelIndependentBlock>
             <Channel Name="BTN" Text="Virtuelle Taster" Number="6" Id="%AID%_CH-6" Icon="button-pointer">

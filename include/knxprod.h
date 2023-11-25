@@ -10,8 +10,8 @@
                                              
 #define MAIN_OpenKnxId 0xFF
 #define MAIN_ApplicationNumber 254
-#define MAIN_ApplicationVersion 8
-#define MAIN_ParameterSize 4188
+#define MAIN_ApplicationVersion 23
+#define MAIN_ParameterSize 4192
 #define MAIN_MaxKoNumber 709
 #define MAIN_OrderNumber "DUMMY"
 #define LOG_ModuleVersion 32
@@ -2529,9 +2529,12 @@
 #define NET_mDNS                      4160      // 1 Bit, Bit 5
 #define     NET_mDNSMask 0x20
 #define     NET_mDNSShift 5
-#define NET_FTP                       4160      // 1 Bit, Bit 4
-#define     NET_FTPMask 0x10
-#define     NET_FTPShift 4
+#define NET_HTTP                      4160      // 1 Bit, Bit 4
+#define     NET_HTTPMask 0x10
+#define     NET_HTTPShift 4
+#define NET_NTP                       4160      // 1 Bit, Bit 3
+#define     NET_NTPMask 0x08
+#define     NET_NTPShift 3
 #define NET_HostName                  4164      // char*, 24 Byte
 
 //   IP-Adresse
@@ -2550,8 +2553,70 @@
 #define ParamNET_StaticIP                  ((bool)(knx.paramByte(NET_StaticIP) & NET_StaticIPMask))
 //   mDNS
 #define ParamNET_mDNS                      ((bool)(knx.paramByte(NET_mDNS) & NET_mDNSMask))
-//   FTP-Server
-#define ParamNET_FTP                       ((bool)(knx.paramByte(NET_FTP) & NET_FTPMask))
+//   Weberver
+#define ParamNET_HTTP                      ((bool)(knx.paramByte(NET_HTTP) & NET_HTTPMask))
+//   Zeitgeber (NTP)
+#define ParamNET_NTP                       ((bool)(knx.paramByte(NET_NTP) & NET_NTPMask))
 // 
 #define ParamNET_HostName                  (knx.paramData(NET_HostName))
+
+#define BASE_StartupDelayBase          4188      // 2 Bits, Bit 7-6
+#define     BASE_StartupDelayBaseMask 0xC0
+#define     BASE_StartupDelayBaseShift 6
+#define BASE_StartupDelayTime          4188      // 14 Bits, Bit 13-0
+#define     BASE_StartupDelayTimeMask 0x3FFF
+#define     BASE_StartupDelayTimeShift 0
+#define BASE_HeartbeatDelayBase        4190      // 2 Bits, Bit 7-6
+#define     BASE_HeartbeatDelayBaseMask 0xC0
+#define     BASE_HeartbeatDelayBaseShift 6
+#define BASE_HeartbeatDelayTime        4190      // 14 Bits, Bit 13-0
+#define     BASE_HeartbeatDelayTimeMask 0x3FFF
+#define     BASE_HeartbeatDelayTimeShift 0
+#define BASE_Diagnose                  4192      // 1 Bit, Bit 7
+#define     BASE_DiagnoseMask 0x80
+#define     BASE_DiagnoseShift 7
+#define BASE_Watchdog                  4192      // 1 Bit, Bit 6
+#define     BASE_WatchdogMask 0x40
+#define     BASE_WatchdogShift 6
+#define BASE_ReadTimeDate              4192      // 1 Bit, Bit 5
+#define     BASE_ReadTimeDateMask 0x20
+#define     BASE_ReadTimeDateShift 5
+#define BASE_CombinedTimeDate          4192      // 1 Bit, Bit 4
+#define     BASE_CombinedTimeDateMask 0x10
+#define     BASE_CombinedTimeDateShift 4
+
+// Zeitbasis
+#define ParamBASE_StartupDelayBase          ((knx.paramByte(BASE_StartupDelayBase) & BASE_StartupDelayBaseMask) >> BASE_StartupDelayBaseShift)
+// Zeit
+#define ParamBASE_StartupDelayTime          (knx.paramWord(BASE_StartupDelayTime) & BASE_StartupDelayTimeMask)
+// Zeit (in Millisekunden)
+#define ParamBASE_StartupDelayTimeMS        (paramDelay(knx.paramWord(BASE_StartupDelayTime)))
+// Zeitbasis
+#define ParamBASE_HeartbeatDelayBase        ((knx.paramByte(BASE_HeartbeatDelayBase) & BASE_HeartbeatDelayBaseMask) >> BASE_HeartbeatDelayBaseShift)
+// Zeit
+#define ParamBASE_HeartbeatDelayTime        (knx.paramWord(BASE_HeartbeatDelayTime) & BASE_HeartbeatDelayTimeMask)
+// Zeit (in Millisekunden)
+#define ParamBASE_HeartbeatDelayTimeMS      (paramDelay(knx.paramWord(BASE_HeartbeatDelayTime)))
+// Diagnoseobjekt anzeigen
+#define ParamBASE_Diagnose                  ((bool)(knx.paramByte(BASE_Diagnose) & BASE_DiagnoseMask))
+// Watchdog aktivieren
+#define ParamBASE_Watchdog                  ((bool)(knx.paramByte(BASE_Watchdog) & BASE_WatchdogMask))
+// Bei Neustart vom Bus lesen
+#define ParamBASE_ReadTimeDate              ((bool)(knx.paramByte(BASE_ReadTimeDate) & BASE_ReadTimeDateMask))
+// Empfangen über
+#define ParamBASE_CombinedTimeDate          ((bool)(knx.paramByte(BASE_CombinedTimeDate) & BASE_CombinedTimeDateMask))
+
+#define BASE_KoHeartbeat 11
+#define BASE_KoTime 12
+#define BASE_KoDate 13
+#define BASE_KoDiagnose 14
+
+// In Betrieb
+#define KoBASE_Heartbeat                 (knx.getGroupObject(BASE_KoHeartbeat))
+// Uhrzeit/Datum
+#define KoBASE_Time                      (knx.getGroupObject(BASE_KoTime))
+// Datum
+#define KoBASE_Date                      (knx.getGroupObject(BASE_KoDate))
+// Diagnose
+#define KoBASE_Diagnose                  (knx.getGroupObject(BASE_KoDiagnose))
 

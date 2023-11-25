@@ -6,6 +6,6 @@
   <op:config name="%BuildSuffix%" value=""/>
   <op:config name="%BuildLabelSuffix%" value=""/>
   <op:config name="%ApplicationNumber%" value="254"/>
-  <op:config name="%ApplicationVersion%" value="8"/>
-  <op:config name="%ApplicationVersionReplaces%" value="0 1 2 3 4 5 6 7"/>
+  <op:config name="%ApplicationVersion%" value="23"/>
+  <op:config name="%ApplicationVersionReplaces%" value="0 1 2 3 4 5 6 7 8 9 10"/>
 </KNX>
