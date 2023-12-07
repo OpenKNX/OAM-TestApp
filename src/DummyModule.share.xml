@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-model href="../../Organization/knxprod-support/knx_project_14/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/14" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
-  <op:config name="%DMY-ChannelName%" value="Dummy"/>
-  <op:config name="%DMY-ChannelText%" value="Dummykanal"/>
-  <op:config name="%DMY-ChannelIcon%" value="router"/>
+<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
       <ApplicationPrograms>
@@ -27,20 +24,25 @@
             <Extension>
               <Baggage RefId="%FILE-HELP-de%" />
               <Baggage RefId="%FILE-ICONS%" />
-              <Baggage RefId="%FILE-openknx%" />
-              <Baggage RefId="%FILE-pics-and%" />
-              <Baggage RefId="%FILE-pics-or%" />
             </Extension>
           </Static>
           <Dynamic>
+            <Channel Name="MainChannel" Text="Dummy" Number="%TT%" Id="%AID%_CH-%TT%" Icon="shape">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Documentation" Text="Dokumentation" Icon="information-outline" HelpContext="DMY-Doc">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Dokumentation" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Unten steht eine Dokumentation in Hilfefenster" />
+              </ParameterBlock>
+              
+              <op:include href="DummyModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DMY" IsInner="true" />
+            </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
       <Baggages>
-        <Baggage TargetPath="FF\01" Name="Help_de.zip" Id="%FILE-HELP-de%">
+        <Baggage TargetPath="" Name="Help_de.zip" Id="%FILE-HELP-de%">
           <FileInfo TimeInfo="%DATETIME%" />
         </Baggage>
-        <Baggage TargetPath="FF\01" Name="Icons.zip" Id="%FILE-ICONS%">
+        <Baggage TargetPath="" Name="Icons.zip" Id="%FILE-ICONS%">
           <FileInfo TimeInfo="%DATETIME%" />
         </Baggage>
       </Baggages>

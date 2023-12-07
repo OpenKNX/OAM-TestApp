@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
         {
-            "label": "OpenKNXproducer",
+            "label": "OpenKNXproducer (TP)",
             "type": "shell",
             "command": "~/bin/OpenKNXproducer.exe",
             "args": [
@@ -10,13 +10,13 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "src/DummyModule"
+                "src/DummyModuleTP"
             ],
             "problemMatcher": [],
             "group": "test"
         },
         {
-            "label": "OpenKNXproducer (Beta)",
+            "label": "OpenKNXproducer (TPIP)",
             "type": "shell",
             "command": "~/bin/OpenKNXproducer.exe",
             "args": [
@@ -24,9 +24,21 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "-c",
-                "src/Beta.xml",
-                "src/DummyModule"
+                "src/DummyModuleTPIP"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "OpenKNXproducer (IP)",
+            "type": "shell",
+            "command": "~/bin/OpenKNXproducer.exe",
+            "args": [
+                "create",
+                "--Debug",
+                "-h",
+                "include/knxprod.h",
+                "src/DummyModuleIP"
             ],
             "problemMatcher": [],
             "group": "test"

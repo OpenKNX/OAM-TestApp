@@ -3,8 +3,6 @@
 #include "DummyChannel.h"
 #include "UsbExchangeModule.h"
 
-#define DMY_ChannelCount 10
-
 class DummyModule : public OpenKNX::Module
 {
   private:
