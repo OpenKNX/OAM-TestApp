@@ -4,8 +4,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="254"
-    ApplicationVersion="1"
-    ReplacesVersions="0"
+    ApplicationVersion="2"
+    ReplacesVersions="1"
     ApplicationRevision="0"
     ProductName="Dummy"
     BusCurrent="30"
