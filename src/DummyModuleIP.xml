@@ -11,6 +11,8 @@
     BusCurrent="30"
     BuildSuffix="-IP"
     BuildSuffixText=" (IP)"
+    MediumTypes="MT-5"
+    MaskVersion="MV-57B0"
     OrderNumber="DUMMY" />
 
   <op:define prefix="BASE" ModuleType="10"
@@ -38,5 +40,5 @@
     <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="2.0" /> 
   </op:define>
 
-  <generate base="TemplateApplicationIP.xml"/>
+  <generate />
 </KNX>
