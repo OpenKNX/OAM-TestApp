@@ -9,11 +9,12 @@
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
 #define MAIN_OpenKnxId 0xAF
-#define MAIN_ApplicationNumber 254
-#define MAIN_ApplicationVersion 2
+#define MAIN_ApplicationNumber 253
+#define MAIN_ApplicationVersion 3
 #define MAIN_ParameterSize 2818
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "DUMMY"
+#define NET_ModuleVersion 1
 #define BTN_ModuleVersion 3
 #define LOG_ModuleVersion 32
 // Parameter with single occurrence
@@ -126,8 +127,7 @@
 #define NET_HostAddress                         14      // IP address, 4 Byte
 #define NET_SubnetMask                          18      // IP address, 4 Byte
 #define NET_GatewayAddress                      22      // IP address, 4 Byte
-#define NET_NameserverAddress1                  26      // IP address, 4 Byte
-#define NET_NameserverAddress2                  30      // IP address, 4 Byte
+#define NET_NameserverAddress                   26      // IP address, 4 Byte
 #define NET_CustomHostname                      34      // 1 Bit, Bit 7
 #define     NET_CustomHostnameMask 0x80
 #define     NET_CustomHostnameShift 7
@@ -151,10 +151,8 @@
 #define ParamNET_SubnetMask                          (knx.paramInt(NET_SubnetMask))
 //   Standardgateway
 #define ParamNET_GatewayAddress                      (knx.paramInt(NET_GatewayAddress))
-//   Primär
-#define ParamNET_NameserverAddress1                  (knx.paramInt(NET_NameserverAddress1))
-//   Sekundär
-#define ParamNET_NameserverAddress2                  (knx.paramInt(NET_NameserverAddress2))
+//   Nameserver
+#define ParamNET_NameserverAddress                   (knx.paramInt(NET_NameserverAddress))
 //   Hostname anpassen
 #define ParamNET_CustomHostname                      ((bool)(knx.paramByte(NET_CustomHostname) & NET_CustomHostnameMask))
 //   DHCP

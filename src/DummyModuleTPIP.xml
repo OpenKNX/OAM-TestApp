@@ -4,8 +4,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="254"
-    ApplicationVersion="2"
-    ReplacesVersions="1"
+    ApplicationVersion="3"
+    ReplacesVersions="2 1"
     ApplicationRevision="0"
     ProductName="Dummy"
     BusCurrent="30"
@@ -17,9 +17,11 @@
     share="../lib/OGM-Common/src/Common.share.xml" />
 
   <op:define prefix="NET" ModuleType="11"
-    share="../lib/OFM-Network/src/Network.share.xml" />
+    share="../lib/OFM-Network/src/Network.share.xml">
+    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="1" /> 
+  </op:define>
 
-    <op:define prefix="DMY" ModuleType="12"
+  <op:define prefix="DMY" ModuleType="12"
     share="DummyModule.share.xml"
     template="DummyModule.templ.xml"
     NumChannels="10" KoOffset="50" />
