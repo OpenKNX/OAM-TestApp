@@ -4,8 +4,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="253"
-    ApplicationVersion="3"
-    ReplacesVersions="2"
+    ApplicationVersion="4"
+    ReplacesVersions="3 2 1"
     ApplicationRevision="0"
     ProductName="Dummy"
     BusCurrent="30"
@@ -39,7 +39,7 @@
     share="../lib/OFM-LogicModule/src/Logikmodul.share.xml"
     template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml"
     NumChannels="20" KoOffset="340">
-    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="2.0" /> 
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="48" /> 
   </op:define>
 
   <generate />

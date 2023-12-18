@@ -10,13 +10,13 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 3
-#define MAIN_ParameterSize 2818
+#define MAIN_ApplicationVersion 4
+#define MAIN_ParameterSize 2819
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "DUMMY"
 #define NET_ModuleVersion 1
 #define BTN_ModuleVersion 3
-#define LOG_ModuleVersion 32
+#define LOG_ModuleVersion 48
 // Parameter with single occurrence
 
 
@@ -65,6 +65,9 @@
 #define BASE_ReadTimeDate                         5      // 1 Bit, Bit 5
 #define     BASE_ReadTimeDateMask 0x20
 #define     BASE_ReadTimeDateShift 5
+#define BASE_HeartbeatExtended                    5      // 1 Bit, Bit 4
+#define     BASE_HeartbeatExtendedMask 0x10
+#define     BASE_HeartbeatExtendedShift 4
 #define BASE_Latitude                             6      // float
 #define BASE_Longitude                           10      // float
 
@@ -102,6 +105,8 @@
 #define ParamBASE_Watchdog                            ((bool)(knx.paramByte(BASE_Watchdog) & BASE_WatchdogMask))
 // Bei Neustart vom Bus lesen
 #define ParamBASE_ReadTimeDate                        ((bool)(knx.paramByte(BASE_ReadTimeDate) & BASE_ReadTimeDateMask))
+// Erweitertes "In Betrieb"
+#define ParamBASE_HeartbeatExtended                   ((bool)(knx.paramByte(BASE_HeartbeatExtended) & BASE_HeartbeatExtendedMask))
 // Breitengrad
 #define ParamBASE_Latitude                            (knx.paramFloat(BASE_Latitude, Float_Enc_IEEE754Single))
 // Längengrad
@@ -864,7 +869,8 @@
 #define LOG_BuzzerSilent                        1091      // uint16_t
 #define LOG_BuzzerNormal                        1093      // uint16_t
 #define LOG_BuzzerLoud                          1095      // uint16_t
-#define LOG_LedMapping                          1097      // 3 Bits, Bit 7-5
+#define LOG_VisibleChannels                     1097      // uint8_t
+#define LOG_LedMapping                          1098      // 3 Bits, Bit 7-5
 #define     LOG_LedMappingMask 0xE0
 #define     LOG_LedMappingShift 5
 
@@ -950,6 +956,8 @@
 #define ParamLOG_BuzzerNormal                        (knx.paramWord(LOG_BuzzerNormal))
 // Frequenz für Buzzer (laut)
 #define ParamLOG_BuzzerLoud                          (knx.paramWord(LOG_BuzzerLoud))
+// Verfügbare Kanäle
+#define ParamLOG_VisibleChannels                     (knx.paramByte(LOG_VisibleChannels))
 // Lötpad A / B / C entspricht
 #define ParamLOG_LedMapping                          ((knx.paramByte(LOG_LedMapping) & LOG_LedMappingMask) >> LOG_LedMappingShift)
 
@@ -973,7 +981,7 @@
 #define LOG_ChannelCount 20
 
 // Parameter per channel
-#define LOG_ParamBlockOffset 1098
+#define LOG_ParamBlockOffset 1099
 #define LOG_ParamBlockSize 86
 #define LOG_ParamCalcIndex(index) (index + LOG_ParamBlockOffset + _channelIndex * LOG_ParamBlockSize)
 
@@ -2572,11 +2580,11 @@
 
 // Header generation for Module 'BASE_KommentarModule'
 
-#define BASE_KommentarModuleCount 20
+#define BASE_KommentarModuleCount 0
 #define BASE_KommentarModuleModuleParamSize 0
 #define BASE_KommentarModuleSubmodulesParamSize 0
 #define BASE_KommentarModuleParamSize 0
-#define BASE_KommentarModuleParamOffset 2818
+#define BASE_KommentarModuleParamOffset 2819
 #define BASE_KommentarModuleCalcIndex(index, m1) (index + BASE_KommentarModuleParamOffset + _channelIndex * BASE_KommentarModuleCount * BASE_KommentarModuleParamSize + m1 * BASE_KommentarModuleParamSize)
 
 

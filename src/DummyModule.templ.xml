@@ -25,7 +25,7 @@
                   <ParameterBlock Id="%AID%_PB-%TT%%CC%01" Name="SOM%C%Wrapper" Inline="true">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Beispiel Channel" UIHint="Headline" />
                     <!-- Name -->
-                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="tag-outline" HelpContext="Base-ChannelName"/>
+                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="tag-outline" HelpContext="BASE-ChannelName"/>
                   </ParameterBlock>
                 </Channel>
               </ParameterBlock>
