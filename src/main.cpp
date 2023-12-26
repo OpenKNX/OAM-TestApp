@@ -18,7 +18,7 @@ void setup()
 {
     const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
-    openknx.addModule(1, new Logic());
+    openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxDummyModule);
     openknx.addModule(3, openknxVirtualButtonModule);
 #ifdef ARDUINO_ARCH_RP2040
@@ -36,7 +36,9 @@ void setup()
     });
 #endif
 
+#ifdef ARDUINO_ARCH_RP2040
     logInfo("Test", "FreeStack: %i bytes", rp2040.getFreeStack());
+#endif
     // openknx.progLed.off();
     // openknx.progLed.on();
     // openknx.progLed.blinking();
@@ -46,7 +48,11 @@ void setup()
 void loop()
 {
     openknx.loop();
-    _debugCore0 = millis();
+    if (delayCheck(_debugCore0, 2000))
+    {
+        logInfo("WD", "cause %i", openknx.watchdog.lastReset());
+        _debugCore0 = millis();
+    }
 }
 
 #ifdef OPENKNX_DUALCORE

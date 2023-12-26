@@ -25,7 +25,6 @@
     #ifdef BOARD_KONNEKTING_MI
         #define PROG_LED_PIN A3
         #define PROG_LED_PIN_ACTIVE_ON HIGH
-        #define PROG_LED_SUPPORT_PWM
         #define PROG_BUTTON_PIN 38
         #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
         #define INFO_LED_PIN A5

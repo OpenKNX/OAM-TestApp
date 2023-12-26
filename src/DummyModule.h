@@ -1,7 +1,9 @@
 #pragma once
-#include "OpenKNX.h"
 #include "DummyChannel.h"
-#include "UsbExchangeModule.h"
+#include "OpenKNX.h"
+#ifdef ARDUINO_ARCH_RP2040
+    #include "UsbExchangeModule.h"
+#endif
 
 class DummyModule : public OpenKNX::Module
 {
@@ -10,11 +12,13 @@ class DummyModule : public OpenKNX::Module
     uint32_t _timer1 = 0;
     uint32_t _timer2 = 0;
     DummyChannel *_channels[DMY_ChannelCount];
-    OpenKNX::Flash::Driver * _dummyStorage = nullptr;
+    OpenKNX::Flash::Driver *_dummyStorage = nullptr;
 
     void setupCustomFlash();
     void setupChannels();
+#ifdef ARDUINO_ARCH_RP2040
     void registerUsbExchangeCallbacks();
+#endif
 
   public:
     DummyModule();

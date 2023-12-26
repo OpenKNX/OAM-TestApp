@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 6
+#define MAIN_ApplicationVersion 4
 #define MAIN_ParameterSize 2819
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "DUMMY"
