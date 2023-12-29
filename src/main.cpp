@@ -2,6 +2,7 @@
 #include "Logic.h"
 #include "OpenKNX.h"
 #include "VirtualButtonModule.h"
+#include "knx/logger.h"
 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
@@ -14,8 +15,14 @@ uint32_t _debugCore1 = 0;
 bool func1test = false;
 bool core1_separate_stack = true;
 
+void mylog(const char* message, va_list& values)
+{
+    openknx.logger.logWithPrefixAndValues("knx", message, values);
+}
+
 void setup()
 {
+    knxLogger.setCallback(mylog);
     const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
