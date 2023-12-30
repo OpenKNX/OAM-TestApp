@@ -36,9 +36,6 @@ void setup()
     });
 #endif
 
-#ifdef ARDUINO_ARCH_RP2040
-    logInfo("Test", "FreeStack: %i bytes", rp2040.getFreeStack());
-#endif
     // openknx.progLed.off();
     // openknx.progLed.on();
     // openknx.progLed.blinking();
@@ -48,20 +45,13 @@ void setup()
 void loop()
 {
     openknx.loop();
-    if (delayCheck(_debugCore0, 2000))
-    {
-        logInfo("WD", "cause %i", openknx.watchdog.lastReset());
-        _debugCore0 = millis();
-    }
+    _debugCore0 = millis();
 }
 
 #ifdef OPENKNX_DUALCORE
 void setup1()
 {
     openknx.setup1();
-    logInfo("Test", "FreeStack: %i bytes", rp2040.getFreeStack());
-    // logInfo("Test", "StackPointer: %X   (%i)", rp2040.getStackPointer(), rp2040.separateCore1StackSize);
-    // logInfo("Test", "StackAddress: 0x%X - 0x%X", (rp2040.separateCore1Stack), (rp2040.separateCore1Stack) + rp2040.separateCore1StackSize );
 }
 
 void loop1()
