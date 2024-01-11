@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
-  <op:config name="%NET_LanMode%" value="1" />
+  <op:config name="%NET_NetworkVariant%" value="0" />
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="254"
-    ApplicationVersion="5"
-    ReplacesVersions="4 3 2 1"
+    ApplicationVersion="7"
+    ReplacesVersions="6 5 4 3 2 1"
     ApplicationRevision="0"
     ProductName="Dummy"
     BusCurrent="30"
