@@ -14,7 +14,7 @@
 #define MAIN_ParameterSize 2879
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "DUMMY"
-#define BASE_ModuleVersion 2
+#define BASE_ModuleVersion 17
 #define NET_ModuleVersion 2
 #define BTN_ModuleVersion 3
 #define LOG_ModuleVersion 49
