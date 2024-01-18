@@ -14,8 +14,10 @@
     OrderNumber="DUMMY" />
 
   <op:define prefix="BASE" ModuleType="10"
-    share="../lib/OGM-Common/src/Common.share.xml" />
-
+    share="../lib/OGM-Common/src/Common.share.xml">
+    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="2" /> 
+  </op:define>
+  
   <op:define prefix="DMY" ModuleType="12"
     share="DummyModule.share.xml"
     template="DummyModule.templ.xml"
@@ -32,7 +34,7 @@
     share="../lib/OFM-LogicModule/src/Logikmodul.share.xml"
     template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml"
     NumChannels="20" KoOffset="340">
-    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="48" /> 
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="49" /> 
   </op:define>
 
   <generate />
