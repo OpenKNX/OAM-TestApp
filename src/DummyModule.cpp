@@ -63,7 +63,7 @@ void DummyModule::loop(bool configured)
 {
     if (delayCheck(_timer1, 5100))
     {
-        logInfoP("Loop0");
+        // logInfoP("Loop0");
         _timer1 = millis();
     }
 
@@ -93,7 +93,7 @@ void DummyModule::loop1(bool configured)
 {
     if (delayCheck(_timer2, 7200))
     {
-        logInfoP("Loop1");
+        // logInfoP("Loop1");
         _timer2 = millis();
     }
 }

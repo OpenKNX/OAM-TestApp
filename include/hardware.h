@@ -19,6 +19,12 @@
     // #define SmartMF_HardwareRevision_PIN2 11
     // #define SmartMF_HardwareRevision_PIN3 12
     #endif
+
+    
+    #ifdef BOARD_PIPICOW
+        #define PROG_LED_PIN 32
+        #define PROG_LED_PIN_ACTIVE_ON HIGH
+    #endif
 #endif
 
 #ifdef ARDUINO_ARCH_SAMD

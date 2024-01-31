@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 10
+#define MAIN_ApplicationVersion 12
 #define MAIN_ParameterSize 2879
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "DUMMY"
@@ -154,9 +154,6 @@
 #define NET_StaticIP                            62      // 1 Bit, Bit 6
 #define     NET_StaticIPMask 0x40
 #define     NET_StaticIPShift 6
-#define NET_CustomMacAddress                    62      // 1 Bit, Bit 5
-#define     NET_CustomMacAddressMask 0x20
-#define     NET_CustomMacAddressShift 5
 #define NET_mDNS                                63      // 1 Bit, Bit 7
 #define     NET_mDNSMask 0x80
 #define     NET_mDNSShift 7
@@ -184,8 +181,6 @@
 #define ParamNET_CustomHostname                      ((bool)(knx.paramByte(NET_CustomHostname) & NET_CustomHostnameMask))
 // DHCP
 #define ParamNET_StaticIP                            ((bool)(knx.paramByte(NET_StaticIP) & NET_StaticIPMask))
-// MAC-Adresse anpassen
-#define ParamNET_CustomMacAddress                    ((bool)(knx.paramByte(NET_CustomMacAddress) & NET_CustomMacAddressMask))
 // mDNS
 #define ParamNET_mDNS                                ((bool)(knx.paramByte(NET_mDNS) & NET_mDNSMask))
 // Weberver
