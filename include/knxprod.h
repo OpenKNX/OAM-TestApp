@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 12
+#define MAIN_ApplicationVersion 13
 #define MAIN_ParameterSize 2879
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "DUMMY"
@@ -193,6 +193,8 @@
 #define ParamNET_LanMode                             ((knx.paramByte(NET_LanMode) & NET_LanModeMask) >> NET_LanModeShift)
 // 
 #define ParamNET_Dummy                               (knx.paramByte(NET_Dummy))
+
+
 
 #define DMY_ChannelCount 10
 

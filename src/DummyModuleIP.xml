@@ -8,11 +8,12 @@
   <op:config name="%BASE_ExtendedSave%" value="1" />
   <op:config name="%BASE_PeriodicSave%" value="24" />
   <op:config name="%BASE_ManualSave%" value="0" />
+  
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="253"
-    ApplicationVersion="12"
-    ReplacesVersions="11 10 9 8 7 6 5 4 3 2 1"
+    ApplicationVersion="13"
+    ReplacesVersions="12 10 9 8 7 6 5 4 3 2 1"
     ApplicationRevision="0"
     ProductName="Dummy"
     BusCurrent="30"

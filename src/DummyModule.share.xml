@@ -12,22 +12,67 @@
                   <Enumeration Text="Externes KO" Value="0" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="%AID%_PT-PoCTypes" Name="PoCTypes">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Nichts" Value="0" Id="%ENID%" />
+                  <Enumeration Text="Headline" Value="1" Id="%ENID%" />
+                  <Enumeration Text="Infobox" Value="2" Id="%ENID%" />
+                  <Enumeration Text="Integer" Value="3" Id="%ENID%" />
+                  <Enumeration Text="String" Value="4" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
             </ParameterTypes>
             <Parameters>
+              <Parameter Id="%AID%_P-%TT%00001" Name="Count" ParameterType="%AID%_PT-ValueDpt5" Text="" Value="1" Access="None" />
+              <Parameter Id="%AID%_P-%TT%10001" Name="Type1" ParameterType="%AID%_PT-PoCTypes" Text="Type 1" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10002" Name="Type2" ParameterType="%AID%_PT-PoCTypes" Text="Type 2" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10003" Name="Type3" ParameterType="%AID%_PT-PoCTypes" Text="Type 3" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10004" Name="Type4" ParameterType="%AID%_PT-PoCTypes" Text="Type 4" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10005" Name="Type5" ParameterType="%AID%_PT-PoCTypes" Text="Type 5" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10006" Name="Type6" ParameterType="%AID%_PT-PoCTypes" Text="Type 6" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10007" Name="Type7" ParameterType="%AID%_PT-PoCTypes" Text="Type 7" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10008" Name="Type8" ParameterType="%AID%_PT-PoCTypes" Text="Type 8" Value="0" />
+              <Parameter Id="%AID%_P-%TT%10009" Name="Type9" ParameterType="%AID%_PT-PoCTypes" Text="Type 9" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20001" Name="Value1" ParameterType="%AID%_PT-ValueDpt5" Text="Value 1" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20002" Name="Value2" ParameterType="%AID%_PT-ValueDpt5" Text="Value 2" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20003" Name="Value3" ParameterType="%AID%_PT-ValueDpt5" Text="Value 3" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20004" Name="Value4" ParameterType="%AID%_PT-ValueDpt5" Text="Value 4" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20005" Name="Value5" ParameterType="%AID%_PT-ValueDpt5" Text="Value 5" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20006" Name="Value6" ParameterType="%AID%_PT-ValueDpt5" Text="Value 6" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20007" Name="Value7" ParameterType="%AID%_PT-ValueDpt5" Text="Value 7" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20008" Name="Value8" ParameterType="%AID%_PT-ValueDpt5" Text="Value 8" Value="0" />
+              <Parameter Id="%AID%_P-%TT%20009" Name="Value9" ParameterType="%AID%_PT-ValueDpt5" Text="Value 9" Value="0" />
             </Parameters>
             <ParameterRefs>
+              <ParameterRef Id="%AID%_P-%TT%00001_R-%TT%0000101" RefId="%AID%_P-%TT%00001" />
+              <ParameterRef Id="%AID%_P-%TT%10001_R-%TT%1000101" RefId="%AID%_P-%TT%10001" />
+              <ParameterRef Id="%AID%_P-%TT%10002_R-%TT%1000201" RefId="%AID%_P-%TT%10002" />
+              <ParameterRef Id="%AID%_P-%TT%10003_R-%TT%1000301" RefId="%AID%_P-%TT%10003" />
+              <ParameterRef Id="%AID%_P-%TT%10004_R-%TT%1000401" RefId="%AID%_P-%TT%10004" />
+              <ParameterRef Id="%AID%_P-%TT%10005_R-%TT%1000501" RefId="%AID%_P-%TT%10005" />
+              <ParameterRef Id="%AID%_P-%TT%10006_R-%TT%1000601" RefId="%AID%_P-%TT%10006" />
+              <ParameterRef Id="%AID%_P-%TT%10007_R-%TT%1000701" RefId="%AID%_P-%TT%10007" />
+              <ParameterRef Id="%AID%_P-%TT%10008_R-%TT%1000801" RefId="%AID%_P-%TT%10008" />
+              <ParameterRef Id="%AID%_P-%TT%10009_R-%TT%1000901" RefId="%AID%_P-%TT%10009" />
+              <ParameterRef Id="%AID%_P-%TT%20001_R-%TT%2000101" RefId="%AID%_P-%TT%20001" />
+              <ParameterRef Id="%AID%_P-%TT%20002_R-%TT%2000201" RefId="%AID%_P-%TT%20002" />
+              <ParameterRef Id="%AID%_P-%TT%20003_R-%TT%2000301" RefId="%AID%_P-%TT%20003" />
+              <ParameterRef Id="%AID%_P-%TT%20004_R-%TT%2000401" RefId="%AID%_P-%TT%20004" />
+              <ParameterRef Id="%AID%_P-%TT%20005_R-%TT%2000501" RefId="%AID%_P-%TT%20005" />
+              <ParameterRef Id="%AID%_P-%TT%20006_R-%TT%2000601" RefId="%AID%_P-%TT%20006" />
+              <ParameterRef Id="%AID%_P-%TT%20007_R-%TT%2000701" RefId="%AID%_P-%TT%20007" />
+              <ParameterRef Id="%AID%_P-%TT%20008_R-%TT%2000801" RefId="%AID%_P-%TT%20008" />
+              <ParameterRef Id="%AID%_P-%TT%20009_R-%TT%2000901" RefId="%AID%_P-%TT%20009" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
             <ComObjectRefs>
             </ComObjectRefs>
-            <Extension>
-              <Baggage RefId="%FILE-HELP-de%" />
-              <Baggage RefId="%FILE-ICONS%" />
-            </Extension>
+            <Script>
+              <op:include href="POC.script.js" prefix="DMY" type="script" />
+            </Script>  
           </Static>
           <Dynamic>
-
             
             <Channel Name="MainChannel" Text="Dummy" Number="%TT%" Id="%AID%_CH-%TT%" Icon="shape">
               <ParameterBlock Id="%AID%_PB-nnn" Name="HiddenOptions" Text="" Inline="true">
@@ -38,6 +83,139 @@
               <ParameterBlock Id="%AID%_PB-nnn" Name="Documentation" Text="Dokumentation" Icon="information-outline" HelpContext="DMY-Doc">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Dokumentation" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Unten steht eine Dokumentation in Hilfefenster" />
+              </ParameterBlock>
+
+              <ParameterBlock Id="%AID%_PB-nnn" Name="PoC" Text="PoC" Icon="format-list-bulleted">
+                <ParameterRefRef RefId="%AID%_P-%TT%00001_R-%TT%0000101" />
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&lt;9">
+                    <Button Id="%AID%_MD-%TT%11000_B-%TT%11000" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 1 }" Icon="plus" />
+                  </when>
+                </choose>
+
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;0">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10001_R-%TT%1000101" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20001_R-%TT%2000101" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&gt;1">
+                        <Button Id="%AID%_MD-%TT%12001_B-%TT%12001" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 1 }" Icon="minus" />
+                      </when>
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11001_B-%TT%11001" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 2 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;1">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10002_R-%TT%1000201" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20002_R-%TT%2000201" />
+                    <Button Id="%AID%_MD-%TT%12002_B-%TT%12002" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 2 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11002_B-%TT%11002" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 3 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;2">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10003_R-%TT%1000301" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20003_R-%TT%2000301" />
+                    <Button Id="%AID%_MD-%TT%12003_B-%TT%12003" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 3 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11003_B-%TT%11003" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 4 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;3">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10004_R-%TT%1000401" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20004_R-%TT%2000401" />
+                    <Button Id="%AID%_MD-%TT%12004_B-%TT%12004" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 4 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11004_B-%TT%11004" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 5 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;4">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10005_R-%TT%1000501" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20005_R-%TT%2000501" />
+                    <Button Id="%AID%_MD-%TT%12005_B-%TT%12005" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 5 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11005_B-%TT%11005" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 6 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;5">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10006_R-%TT%1000601" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20006_R-%TT%2000601" />
+                    <Button Id="%AID%_MD-%TT%12006_B-%TT%12006" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 6 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11006_B-%TT%11006" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 7 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;6">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10007_R-%TT%1000701" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20007_R-%TT%2000701" />
+                    <Button Id="%AID%_MD-%TT%12007_B-%TT%12007" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 7 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11007_B-%TT%11007" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 8 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;7">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10008_R-%TT%1000801" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20008_R-%TT%2000801" />
+                    <Button Id="%AID%_MD-%TT%12008_B-%TT%12008" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 8 }" Icon="minus" />
+                    <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                      <when test="&lt;9">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                        <Button Id="%AID%_MD-%TT%11008_B-%TT%11008" Text="" EventHandler="DMYPOC_add" EventHandlerParameters="{ &quot;Position&quot;: 9 }" Icon="plus" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="&gt;8">
+                    <ParameterRefRef RefId="%AID%_P-%TT%10009_R-%TT%1000901" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%20009_R-%TT%2000901" />
+                    <Button Id="%AID%_MD-%TT%12009_B-%TT%12009" Text="" EventHandler="DMYPOC_del" EventHandlerParameters="{ &quot;Position&quot;: 9 }" Icon="minus" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                  </when>
+                </choose>
               </ParameterBlock>
               
               <op:include href="DummyModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DMY" IsInner="true" />
