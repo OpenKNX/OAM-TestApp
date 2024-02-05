@@ -11,6 +11,10 @@
     #endif
 #endif
 
+#ifdef ARDUINO_ARCH_ESP32
+    #include "NetworkModule.h"
+#endif
+
 uint32_t _debugCore0 = 0;
 uint32_t _debugCore1 = 0;
 bool func1test = false;
@@ -30,6 +34,9 @@ void setup()
     #endif
     openknx.addModule(8, openknxUsbExchangeModule);
     openknx.addModule(9, openknxFileTransferModule);
+#endif
+#ifdef ARDUINO_ARCH_ESP32
+    openknx.addModule(7, openknxNetwork);
 #endif
     openknx.setup();
 
