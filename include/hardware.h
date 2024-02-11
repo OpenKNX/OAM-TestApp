@@ -44,8 +44,8 @@
     #ifdef BOARD_ESP32_DEV
         #define PROG_LED_PIN 2
         #define PROG_LED_PIN_ACTIVE_ON HIGH
-        #define PROG_BUTTON_PIN 35
-        #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
+        // #define PROG_BUTTON_PIN 35
+        // #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
         #define HARDWARE_NAME "ESP32_DEV"
     #endif
     #ifdef BOARD_ESP32_WT32_ETH01

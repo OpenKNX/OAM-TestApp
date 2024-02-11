@@ -45,17 +45,22 @@ void DummyModule::setupCustomFlash()
 #endif
 
     logTraceP("write dummy data");
-    _dummyStorage.writeByte(0, 0x11);
-    _dummyStorage.writeWord(1, 0xFFFF);
-    _dummyStorage.writeInt(3, 6666666);
-    _dummyStorage.commit();
+    // _dummyStorage.writeByte(0, 0x11);
+    // _dummyStorage.writeWord(1, 0xFFFF);
+    // _dummyStorage.writeInt(3, 6666666);
+    // for (size_t i = 0; i < 4095; i++)
+    // {
+    //     _dummyStorage.writeByte(i, i);
+    // }
+    // _dummyStorage.commit();
 
     logDebugP("read dummy data");
     logIndentUp();
-    logHexDebugP(_dummyStorage.flashAddress(), 7);
-    logDebugP("byte: %02X", _dummyStorage.readByte(0)); // UINT8
-    logDebugP("word: %i", _dummyStorage.readWord(1));   // UINT16
-    logDebugP("int: %i", _dummyStorage.readInt(3));     // UINT32
+    // logHexDebugP(_dummyStorage.flashAddress(), 4095);
+    // logDebugP("byte: %02X", _dummyStorage.readByte(0)); // UINT8
+    // logDebugP("word: %i", _dummyStorage.readWord(1));   // UINT16
+    // logDebugP("int: %i", _dummyStorage.readInt(3));     // UINT32
+    
     logIndentDown();
 }
 
