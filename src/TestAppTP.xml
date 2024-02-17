@@ -1,36 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
-  <op:config name="%NET_ServiceHTTP%" value="0" />
-  <op:config name="%NET_ServiceNTP%" value="0" />
-
-  <op:config name="%BASE_ShowExtendedSave%" value="1" />
-  <op:config name="%BASE_ExtendedSave%" value="1" />
-  <op:config name="%BASE_PeriodicSave%" value="24" />
-  <op:config name="%BASE_ManualSave%" value="0" />
-
   <op:ETS
     OpenKnxId="0xAF"
-    ApplicationNumber="254"
-    ApplicationVersion="15"
-    ReplacesVersions="14 13 12 11 10 9 8 7 6 5 4 3 2 1"
+    ApplicationNumber="255"
+    ApplicationVersion="1"
+    ReplacesVersions="0"
     ApplicationRevision="0"
-    ProductName="Dummy"
-    BusCurrent="30"
-    BuildSuffix="-TPIP"
-    BuildSuffixText=" (TP+IP)"
-    OrderNumber="DUMMY" />
+    ProductName="TestApp"
+    BusCurrent="10"
+    BuildSuffix="-TP"
+    BuildSuffixText=" (TP)"
+    OrderNumber="TESTAPP" />
 
   <op:define prefix="BASE" ModuleType="10"
-    share="../lib/OGM-Common/src/Common.share.xml" >
+    share="../lib/OGM-Common/src/Common.share.xml">
     <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="17" />
   </op:define>
-
-  <op:define prefix="NET" ModuleType="11"
-    share="../lib/OFM-Network/src/Network.share.xml">
-    <op:verify File="../lib/OFM-Network/library.json" ModuleVersion="2" /> 
-  </op:define>
-
+  
   <op:define prefix="DMY" ModuleType="12"
     share="DummyModule.share.xml"
     template="DummyModule.templ.xml"

@@ -10,10 +10,10 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 13
+#define MAIN_ApplicationVersion 1
 #define MAIN_ParameterSize 2879
 #define MAIN_MaxKoNumber 399
-#define MAIN_OrderNumber "DUMMY"
+#define MAIN_OrderNumber "TESTAPP"
 #define BASE_ModuleVersion 17
 #define NET_ModuleVersion 2
 #define BTN_ModuleVersion 3

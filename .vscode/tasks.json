@@ -10,7 +10,7 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "src/DummyModuleTP"
+                "src/TestAppTP"
             ],
             "problemMatcher": [],
             "group": "test"
@@ -24,7 +24,7 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "src/DummyModuleTPIP"
+                "src/TestAppTPIP"
             ],
             "problemMatcher": [],
             "group": "test"
@@ -38,7 +38,7 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "src/DummyModuleIP"
+                "src/TestAppIP"
             ],
             "problemMatcher": [],
             "group": "test"
