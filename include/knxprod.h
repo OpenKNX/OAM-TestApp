@@ -10,7 +10,7 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 1
+#define MAIN_ApplicationVersion 16
 #define MAIN_ParameterSize 2879
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "TESTAPP"
