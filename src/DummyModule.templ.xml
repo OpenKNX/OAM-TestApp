@@ -20,14 +20,10 @@
           <Dynamic>
             <ChannelIndependentBlock> 
               <!-- START INCLUDE HERE -->
-              <ParameterBlock Id="%AID%_PB-%C%1" Name="DMY%CC%Page" Text="Kanal %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="shape" HelpContext="Empty">
-                <Channel Id="%AID%_CH-DMY%CC%" Name="f%CC%DMY" Number="DMY%CC%" Text="Kanal %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001">
-                  <ParameterBlock Id="%AID%_PB-%TT%%CC%01" Name="SOM%C%Wrapper" Inline="true">
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Beispiel Channel" UIHint="Headline" />
-                    <!-- Name -->
-                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="tag-outline" HelpContext="BASE-ChannelName"/>
-                  </ParameterBlock>
-                </Channel>
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Channel%C%Page" Text="Kanal %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="shape" HelpContext="Empty" ShowInComObjectTree="true">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Beispiel Channel" UIHint="Headline" />
+                <!-- Name -->
+                <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="tag-outline" HelpContext="BASE-ChannelName"/>
               </ParameterBlock>
             </ChannelIndependentBlock>
           </Dynamic>

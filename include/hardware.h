@@ -38,6 +38,15 @@
         #define HARDWARE_NAME "KONNEKTING-MI"
         #define OPENKNX_NO_BOOT_PULSATING 1
     #endif
+    #ifdef BOARD_WEMOS_MINI_D1
+        #define PROG_LED_PIN 3
+        #define PROG_LED_PIN_ACTIVE_ON HIGH
+        #define PROG_BUTTON_PIN 5
+        #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
+        #define INFO_LED_PIN 4
+        #define INFO_LED_PIN_ACTIVE_ON HIGH
+        #define HARDWARE_NAME "WEMOS-MINI-D1"
+    #endif
 #endif
 
 #ifdef ARDUINO_ARCH_ESP32
