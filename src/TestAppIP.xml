@@ -10,12 +10,13 @@
 
   <op:config name="%BTN_NumChannelsDefault%" value="5" />
   <op:config name="%LOG_NumChannelsDefault%" value="5" />
+  <op:config name="%DMY_NumChannelsDefault%" value="5" />
   
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="253"
-    ApplicationVersion="1.1"
-    ReplacesVersions="1.0"
+    ApplicationVersion="1.2"
+    ReplacesVersions="1.1 1.0"
     ApplicationRevision="0"
     ProductName="TestApp"
     BusCurrent="30"

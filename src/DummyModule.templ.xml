@@ -19,12 +19,16 @@
           </Static>
           <Dynamic>
             <ChannelIndependentBlock> 
-              <!-- START INCLUDE HERE -->
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Channel%C%Page" Text="Kanal %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="shape" HelpContext="Empty" ShowInComObjectTree="true">
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Beispiel Channel" UIHint="Headline" />
-                <!-- Name -->
-                <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="tag-outline" HelpContext="BASE-ChannelName"/>
-              </ParameterBlock>
+              <choose ParamRefId="%AID%_UP-%TT%00001_R-%TT%0000101">
+                <when test="&gt;=%C%">
+                  <!-- START INCLUDE HERE -->
+                  <ParameterBlock Id="%AID%_PB-nnn" Name="Channel%C%Page" Text="Kanal %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="shape" HelpContext="Empty" ShowInComObjectTree="true">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Beispiel Channel" UIHint="Headline" />
+                    <!-- Name -->
+                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="tag-outline" HelpContext="BASE-ChannelName"/>    
+                  </ParameterBlock>
+                </when>
+              </choose>
             </ChannelIndependentBlock>
           </Dynamic>
         </ApplicationProgram>

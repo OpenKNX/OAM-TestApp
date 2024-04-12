@@ -19,15 +19,17 @@ void DummyModule::setup(bool configured)
     // logInfoP("Setup0");
     logIndentUp();
 
-    setupCustomFlash();
-    setupChannels();
-
+    if (configured)
+    {
+        setupCustomFlash();
+        setupChannels();
+    }
     logIndentDown();
 }
 
 void DummyModule::setupChannels()
 {
-    for (uint8_t i = 0; i < DMY_ChannelCount; i++)
+    for (uint8_t i = 0; i < ParamDMY_VisibleChannels; i++)
     {
         _channels[i] = new DummyChannel(i);
         _channels[i]->setup();
@@ -66,24 +68,22 @@ void DummyModule::setupCustomFlash()
 
 void DummyModule::loop(bool configured)
 {
-    // if (delayCheck(_timer1, 5100))
-    // {
-    //     // logInfoP("Loop0");
-    //     _timer1 = millis();
-    // }
+    if (delayCheck(_timer1, 5100))
+    {
+        // logInfoP("Loop0");
+        _timer1 = millis();
+    }
 
-    // // counter for processed channels in one loop
-    // uint8_t channelProcessed = 0;
+    if (configured)
+    {
+        if (ParamDMY_VisibleChannels == 0) return;
 
-    // // skip when the free time has been used up or all channels have already been processed once.
-    // while (channelProcessed < DMY_ChannelCount && openknx.freeLoopTime())
-    // {
-    //     if (_channelIterator >= DMY_ChannelCount) _channelIterator = 0;
+        uint8_t processed = 0;
+        do
+            _channels[_currentChannel]->loop();
 
-    //     _channels[_channelIterator]->loop();
-    //     _channelIterator++;
-    //     channelProcessed++;
-    // }
+        while (openknx.freeLoopIterate(ParamDMY_VisibleChannels, _currentChannel, processed));
+    }
 }
 
 #ifdef OPENKNX_DUALCORE
@@ -91,7 +91,7 @@ void DummyModule::loop(bool configured)
 void DummyModule::setup1(bool configured)
 {
     delay(1000);
-    logInfoP("Setup1");
+    // logInfoP("Setup1");
 }
 
 void DummyModule::loop1(bool configured)
@@ -131,52 +131,6 @@ bool DummyModule::processCommand(const std::string cmd, bool diagnoseKo)
         logIndentDown();
         return true;
     }
-
-//     TpUartDataLinkLayer* dll = knx.bau().getDataLinkLayer();
-//     if (cmd.compare("tp mon") == 0)
-//     {
-//         logInfo("KNX<TP>", "Starting tpuart in bus monitor");
-//         dll->monitor();
-//         return true;
-//     }
-//     else if (cmd.compare("tp rst") == 0)
-//     {
-//         logInfo("KNX<TP>", "Reset tpuart");
-//         dll->reset();
-//         return true;
-//     }
-//     else if (cmd.compare("tp stats") == 0)
-//     {
-//         logInfo("KNX<TP>", "ProcessedFrames: %i - IgnoredFrames: %i - InvalidFrames: %i - UnknownControl: %i",
-//                 dll->getRxProcessdFrameCounter(), dll->getRxIgnoredFrameCounter(), dll->getRxInvalidFrameCounter(), dll->getRxUnknownControlCounter());
-//         return true;
-//     }
-//     else if (cmd.compare("tp stop") == 0)
-//     {
-//         logInfo("KNX<TP>", "Stop tpuart");
-//         dll->stop(true);
-//         return true;
-//     }
-//     else if (cmd.compare("tp resume") == 0)
-//     {
-//         logInfo("KNX<TP>", "Resume tpuart");
-//         dll->stop(false);
-//         return true;
-//     }
-// #ifdef NCN5120
-//     else if (cmd.compare("tp poff") == 0)
-//     {
-//         logInfo("KNX<TP>", "Poweroff tpuart VCC2");
-//         dll->powerControl(false);
-//         return true;
-//     }
-//     else if (cmd.compare("tp pon") == 0)
-//     {
-//         logInfo("KNX<TP>", "Poweron tpuart VCC2");
-//         dll->powerControl(true);
-//         return true;
-//     }
-// #endif
 
     return false;
 }
