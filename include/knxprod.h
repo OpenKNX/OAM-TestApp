@@ -10,12 +10,13 @@
                                              
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 254
-#define MAIN_ApplicationVersion 22
+#define MAIN_ApplicationVersion 24
 #define MAIN_ParameterSize 2840
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "TESTAPP"
 #define BASE_ModuleVersion 17
 #define NET_ModuleVersion 2
+#define UCT_ModuleVersion 1
 #define BTN_ModuleVersion 4
 #define LOG_ModuleVersion 50
 // Parameter with single occurrence
@@ -193,6 +194,8 @@
 #define ParamNET_LanMode                             ((knx.paramByte(NET_LanMode) & NET_LanModeMask) >> NET_LanModeShift)
 // 
 #define ParamNET_Dummy                               (knx.paramByte(NET_Dummy))
+
+
 
 #define DMY_VisibleChannels                     122      // uint8_t
 
@@ -442,11 +445,11 @@
 #define ParamBTN_ChannelInputA                       (knx.paramWord(BTN_ParamCalcIndex(BTN_ChannelInputA)))
 // 2. Taster
 #define ParamBTN_ChannelInputB                       (knx.paramWord(BTN_ParamCalcIndex(BTN_ChannelInputB)))
-//   Mehrfach-Klick
+// Mehrfach-Klick
 #define ParamBTN_ChannelReactionTimeMultiClick       (knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelReactionTimeMultiClick)))
-//   Langer Tasterdruck
+// Langer Tasterdruck
 #define ParamBTN_ChannelReactionTimeLong             (knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelReactionTimeLong)))
-//   Extra langer Tasterdruck
+// Extra langer Tasterdruck
 #define ParamBTN_ChannelReactionTimeExtraLong        (knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelReactionTimeExtraLong)))
 // Datentyp
 #define ParamBTN_ChannelOutputShort_DPT              (knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputShort_DPT)))
@@ -462,29 +465,29 @@
 #define ParamBTN_ChannelOutputMulti_Click2_Active    ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputMulti_Click2_Active)) & BTN_ChannelOutputMulti_Click2_ActiveMask))
 // 3. Klick
 #define ParamBTN_ChannelOutputMulti_Click3_Active    ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputMulti_Click3_Active)) & BTN_ChannelOutputMulti_Click3_ActiveMask))
-//   Wert beim Drücken
+// Wert beim Drücken
 #define ParamBTN_ChannelOutputShort_Taster1_Active_Press ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputShort_Taster1_Active_Press)) & BTN_ChannelOutputShort_Taster1_Active_PressMask))
-//   Wert beim Loslassen
+// Wert beim Loslassen
 #define ParamBTN_ChannelOutputShort_Taster1_Active_Release ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputShort_Taster1_Active_Release)) & BTN_ChannelOutputShort_Taster1_Active_ReleaseMask))
-//   Wert beim Drücken
+// Wert beim Drücken
 #define ParamBTN_ChannelOutputShort_Taster2_Active_Press ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputShort_Taster2_Active_Press)) & BTN_ChannelOutputShort_Taster2_Active_PressMask))
-//   Wert beim Loslassen
+// Wert beim Loslassen
 #define ParamBTN_ChannelOutputShort_Taster2_Active_Release ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputShort_Taster2_Active_Release)) & BTN_ChannelOutputShort_Taster2_Active_ReleaseMask))
-//   Wert beim Drücken
+// Wert beim Drücken
 #define ParamBTN_ChannelOutputLong_Taster1_Active_Press ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputLong_Taster1_Active_Press)) & BTN_ChannelOutputLong_Taster1_Active_PressMask))
-//   Wert beim Loslassen
+// Wert beim Loslassen
 #define ParamBTN_ChannelOutputLong_Taster1_Active_Release ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputLong_Taster1_Active_Release)) & BTN_ChannelOutputLong_Taster1_Active_ReleaseMask))
-//   Wert beim Drücken
+// Wert beim Drücken
 #define ParamBTN_ChannelOutputLong_Taster2_Active_Press ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputLong_Taster2_Active_Press)) & BTN_ChannelOutputLong_Taster2_Active_PressMask))
-//   Wert beim Loslassen
+// Wert beim Loslassen
 #define ParamBTN_ChannelOutputLong_Taster2_Active_Release ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputLong_Taster2_Active_Release)) & BTN_ChannelOutputLong_Taster2_Active_ReleaseMask))
-//   Wert beim Drücken
+// Wert beim Drücken
 #define ParamBTN_ChannelOutputExtraLong_Taster1_Active_Press ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputExtraLong_Taster1_Active_Press)) & BTN_ChannelOutputExtraLong_Taster1_Active_PressMask))
-//   Wert beim Loslassen
+// Wert beim Loslassen
 #define ParamBTN_ChannelOutputExtraLong_Taster1_Active_Release ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputExtraLong_Taster1_Active_Release)) & BTN_ChannelOutputExtraLong_Taster1_Active_ReleaseMask))
-//   Wert beim Drücken
+// Wert beim Drücken
 #define ParamBTN_ChannelOutputExtraLong_Taster2_Active_Press ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputExtraLong_Taster2_Active_Press)) & BTN_ChannelOutputExtraLong_Taster2_Active_PressMask))
-//   Wert beim Loslassen
+// Wert beim Loslassen
 #define ParamBTN_ChannelOutputExtraLong_Taster2_Active_Release ((bool)(knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutputExtraLong_Taster2_Active_Release)) & BTN_ChannelOutputExtraLong_Taster2_Active_ReleaseMask))
 // 
 #define ParamBTN_ChannelOutputShort_Taster1_Dpt1_Press (knx.paramWord(BTN_ParamCalcIndex(BTN_ChannelOutputShort_Taster1_Dpt1_Press)))
@@ -714,17 +717,17 @@
 #define ParamBTN_ChannelOutputExtraLong_Taster2_Dpt3008_Press (knx.paramWord(BTN_ParamCalcIndex(BTN_ChannelOutputExtraLong_Taster2_Dpt3008_Press)))
 // 
 #define ParamBTN_ChannelOutputExtraLong_Taster2_Dpt3008_Release (knx.paramWord(BTN_ParamCalcIndex(BTN_ChannelOutputExtraLong_Taster2_Dpt3008_Release)))
-//   Zusatzausgang (DPT1 beim Loslassen)
+// Zusatzausgang (DPT1 beim Loslassen)
 #define ParamBTN_ChannelOutput2Short_Taster1         ((knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutput2Short_Taster1)) & BTN_ChannelOutput2Short_Taster1Mask) >> BTN_ChannelOutput2Short_Taster1Shift)
-//   Zusatzausgang (DPT1 beim Loslassen)
+// Zusatzausgang (DPT1 beim Loslassen)
 #define ParamBTN_ChannelOutput2Short_Taster2         ((knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutput2Short_Taster2)) & BTN_ChannelOutput2Short_Taster2Mask) >> BTN_ChannelOutput2Short_Taster2Shift)
-//   Zusatzausgang (DPT1 beim Loslassen)
+// Zusatzausgang (DPT1 beim Loslassen)
 #define ParamBTN_ChannelOutput2Long_Taster1          ((knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutput2Long_Taster1)) & BTN_ChannelOutput2Long_Taster1Mask) >> BTN_ChannelOutput2Long_Taster1Shift)
-//   Zusatzausgang (DPT1 beim Loslassen)
+// Zusatzausgang (DPT1 beim Loslassen)
 #define ParamBTN_ChannelOutput2Long_Taster2          (knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutput2Long_Taster2)) & BTN_ChannelOutput2Long_Taster2Mask)
-//   Zusatzausgang (DPT1 beim Loslassen)
+// Zusatzausgang (DPT1 beim Loslassen)
 #define ParamBTN_ChannelOutput2ExtraLong_Taster1     ((knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutput2ExtraLong_Taster1)) & BTN_ChannelOutput2ExtraLong_Taster1Mask) >> BTN_ChannelOutput2ExtraLong_Taster1Shift)
-//   Zusatzausgang (DPT1 beim Loslassen)
+// Zusatzausgang (DPT1 beim Loslassen)
 #define ParamBTN_ChannelOutput2ExtraLong_Taster2     ((knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelOutput2ExtraLong_Taster2)) & BTN_ChannelOutput2ExtraLong_Taster2Mask) >> BTN_ChannelOutput2ExtraLong_Taster2Shift)
 // Schwellwert
 #define ParamBTN_ChannelStatusThreshold              (knx.paramByte(BTN_ParamCalcIndex(BTN_ChannelStatusThreshold)))

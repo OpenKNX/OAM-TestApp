@@ -24,7 +24,7 @@ bool core1_separate_stack = true;
 
 void setup()
 {
-    const uint8_t firmwareRevision = 0;
+    const uint8_t firmwareRevision = 1;
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxDummyModule);
@@ -70,7 +70,7 @@ void setup()
 void loop()
 {
     openknx.loop();
-    if (delayCheck(_debugCore0, 5000))
+    if (delayCheck(_debugCore0, 60000))
     {
         // #if MASK_VERSION == 0x07B0
         //         TpUartDataLinkLayer *dll = knx.bau().getDataLinkLayer();
@@ -101,7 +101,8 @@ void loop()
         //                 dll->enabled(), dll->getRxProcessdFrameCounter(), dll->getRxIgnoredFrameCounter(), dll->getRxInvalidFrameCounter(), dll->getRxUnknownControlCounter());
         // #endif
 
-        openknx.console.showMemory();
+        // openknx.console.showMemory();
+        logInfo("-", "-");
         _debugCore0 = millis();
     }
     // delay(50);
