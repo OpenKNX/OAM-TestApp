@@ -39,16 +39,13 @@
                 <Assign TargetParamRefRef="%AID%_P-3000001_R-300000101" Value="1" />
               </ParameterBlock>
 
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Basic" Text="Allgemein" Icon="cog-outline" HelpContext="BTN-Dokumentation">
-                <!-- Verfuegbare-Kanaele -->
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Basic" Text="Allgemein" Icon="cog-outline" HelpContext="DMY-Doc">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Dummymodul" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_UP-%TT%00001_R-%TT%0000101" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
-              </ParameterBlock>
-
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Documentation" Text="Dokumentation" Icon="information-outline" HelpContext="DMY-Doc">
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Dokumentation" UIHint="Headline" />
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Unten steht eine Dokumentation in Hilfefenster" />
               </ParameterBlock>
               
               <op:include href="DummyModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DMY" IsInner="true" />

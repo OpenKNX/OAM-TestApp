@@ -24,7 +24,7 @@ bool core1_separate_stack = true;
 
 void setup()
 {
-    const uint8_t firmwareRevision = 4;
+    const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxDummyModule);
