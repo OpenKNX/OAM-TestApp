@@ -106,8 +106,8 @@ void DummyModule::loop1(bool configured)
 
 void DummyModule::processInputKo(GroupObject& ko)
 {
-    logDebugP("processInputKo GA%04X", ko.asap());
-    logHexDebugP(ko.valueRef(), ko.valueSize());
+    // logDebugP("processInputKo GA%04X", ko.asap());
+    // logHexDebugP(ko.valueRef(), ko.valueSize());
 }
 
 void DummyModule::showHelp()
