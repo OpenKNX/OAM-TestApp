@@ -136,6 +136,7 @@ bool DummyModule::processCommand(const std::string cmd, bool diagnoseKo)
 }
 
 #ifdef ARDUINO_ARCH_RP2040
+    #ifndef OPENKNX_USB_EXCHANGE_IGNORE
 void DummyModule::registerUsbExchangeCallbacks()
 {
     // Sample
@@ -152,6 +153,7 @@ void DummyModule::registerUsbExchangeCallbacks()
         return true;
     });
 }
+    #endif
 #endif
 
 DummyModule openknxDummyModule;

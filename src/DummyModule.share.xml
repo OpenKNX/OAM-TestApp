@@ -34,11 +34,6 @@
           <Dynamic>
             
             <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Main" Text="Dummy" Icon="shape" HelpContext="Empty">
-              <ParameterBlock Id="%AID%_PB-nnn" Name="HiddenOptions" Text="" Inline="true">
-                <!-- Hide Dropdown for InputSelect on BTN Module -->
-                <Assign TargetParamRefRef="%AID%_P-3000001_R-300000101" Value="1" />
-              </ParameterBlock>
-
               <ParameterBlock Id="%AID%_PB-nnn" Name="Basic" Text="Allgemein" Icon="cog-outline" HelpContext="DMY-Doc">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Dummymodul" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />

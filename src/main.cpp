@@ -5,8 +5,10 @@
 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
+    #ifndef OPENKNX_USB_EXCHANGE_IGNORE
     #include "UsbExchangeModule.h"
-    #if defined(KNX_IP_W5500) || defined(KNX_IP_GENERIC) || defined(KNX_IP_WIFI)
+    #endif
+    #if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
         #include "NetworkModule.h"
     #endif
 #endif
@@ -24,21 +26,27 @@ bool core1_separate_stack = true;
 
 void setup()
 {
+    pinMode(4, OUTPUT);
+    digitalWrite(4, LOW);
+    delay(10000);
+    digitalWrite(4, HIGH);
     const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxDummyModule);
     openknx.addModule(3, openknxVirtualButtonModule);
-#ifdef ARDUINO_ARCH_RP2040
-    #if defined(KNX_IP_W5500) || defined(KNX_IP_GENERIC) || defined(KNX_IP_WIFI)
+
+    #if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
     openknx.addModule(7, openknxNetwork);
     #endif
+
+#ifdef ARDUINO_ARCH_RP2040
+    #ifndef OPENKNX_USB_EXCHANGE_IGNORE
     openknx.addModule(8, openknxUsbExchangeModule);
+    #endif
     openknx.addModule(9, openknxFileTransferModule);
 #endif
-#ifdef ARDUINO_ARCH_ESP32
-    openknx.addModule(7, openknxNetwork);
-#endif
+
     openknx.setup();
 
 #ifdef FUNC1_BUTTON_PIN

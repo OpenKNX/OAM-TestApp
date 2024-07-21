@@ -2,7 +2,9 @@
 #include "DummyChannel.h"
 #include "OpenKNX.h"
 #ifdef ARDUINO_ARCH_RP2040
-    #include "UsbExchangeModule.h"
+    #ifndef OPENKNX_USB_EXCHANGE_IGNORE
+        #include "UsbExchangeModule.h"
+    #endif
 #endif
 
 class DummyModule : public OpenKNX::Module
@@ -17,7 +19,9 @@ class DummyModule : public OpenKNX::Module
     void setupCustomFlash();
     void setupChannels();
 #ifdef ARDUINO_ARCH_RP2040
+    #ifndef OPENKNX_USB_EXCHANGE_IGNORE
     void registerUsbExchangeCallbacks();
+    #endif
 #endif
 
   public:
