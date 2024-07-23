@@ -10,3 +10,5 @@ release/*
 src/*.baggages
 compile_commands.json
 include/versions.h
+/.vscode/extensions.json
+/.vscode/settings.json
