@@ -75,21 +75,24 @@
     #ifdef BOARD_REG1_ESP_DEVBOARD_V00_02
         #define HARDWARE_NAME "REG1_ESP_DEV"
 
-        #define PROG_LED_PIN 4
-        #define PROG_LED_PIN_ACTIVE_ON HIGH
+        #ifdef USE_RGBLED
+            #define RGBLED_PIN 4
+            #define PROG_LED_ADR 0
+            #define INFO1_LED_ADR 1
+            #define INFO2_LED_ADR 2
+            #define INFO3_LED_ADR 3
+        #else
+            #define PROG_LED_PIN 4
+            #define PROG_LED_PIN_ACTIVE_ON HIGH
+        #endif
+
+
         #define PROG_BUTTON_PIN 39
         #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
 
         #define SAVE_INTERRUPT_PIN 36
         #define KNX_UART_RX_PIN 37
         #define KNX_UART_TX_PIN 14
-
-        //#define INFO1_LED_PIN 4
-        //#define INFO1_LED_PIN_ACTIVE_ON HIGH
-        //#define INFO2_LED_PIN 4
-        //#define INFO2_LED_PIN_ACTIVE_ON HIGH
-        //#define INFO3_LED_PIN 4
-        //#define INFO3_LED_PIN_ACTIVE_ON HIGH
 
         #define FUNC1_BUTTON_PIN 38
         #define FUNC2_BUTTON_PIN 34
