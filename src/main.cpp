@@ -117,18 +117,25 @@ void setup()
     // openknx.progLed.off();
     // openknx.progLed.on();
     // openknx.progLed.blinking();
-    // openknx.progLed.pulsing();
+     openknx.progLed.pulsing();
+     openknx.info1Led.pulsing();
+     openknx.info2Led.pulsing();
+     openknx.info3Led.pulsing();
 
     // #ifdef FORCE_ACK
     //     knx.bau().getDataLinkLayer()->forceAck(true);
     // #endif
+    pinMode(20, OUTPUT);
 }
 
 void loop()
 {
+    //openknx.ledManager.writeLeds();
+        delay(2);
     openknx.loop();
-    if (delayCheck(_debugCore0, 60000))
+    if (delayCheck(_debugCore0, 100))
     {
+        openknx.ledManager.writeLeds();
         // #if MASK_VERSION == 0x07B0
         //         TpUartDataLinkLayer *dll = knx.bau().getDataLinkLayer();
         // #endif
@@ -159,7 +166,7 @@ void loop()
         // #endif
 
         // openknx.console.showMemory();
-        logInfo("-", "-");
+        //logInfo("-", "-");
         _debugCore0 = millis();
     }
     // delay(50);

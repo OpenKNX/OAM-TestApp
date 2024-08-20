@@ -77,10 +77,11 @@
 
         #ifdef USE_RGBLED
             #define RGBLED_PIN 4
-            #define PROG_LED_ADR 0
-            #define INFO1_LED_ADR 1
-            #define INFO2_LED_ADR 2
-            #define INFO3_LED_ADR 3
+            #define RGBLED_NUM 4
+            #define PROG_LED_PIN 0
+            #define INFO1_LED_PIN 1
+            #define INFO2_LED_PIN 2
+            #define INFO3_LED_PIN 3
         #else
             #define PROG_LED_PIN 4
             #define PROG_LED_PIN_ACTIVE_ON HIGH
