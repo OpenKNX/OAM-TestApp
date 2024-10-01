@@ -6,7 +6,7 @@
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
     #ifndef OPENKNX_USB_EXCHANGE_IGNORE
-    #include "UsbExchangeModule.h"
+        #include "UsbExchangeModule.h"
     #endif
     #if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
         #include "NetworkModule.h"
@@ -33,11 +33,13 @@ void setup()
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxDummyModule);
+#ifndef ARDUINO_ARCH_SAMD
     openknx.addModule(3, openknxVirtualButtonModule);
+#endif
 
-    #if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
+#if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
     openknx.addModule(7, openknxNetwork);
-    #endif
+#endif
 
 #ifdef ARDUINO_ARCH_RP2040
     #ifndef OPENKNX_USB_EXCHANGE_IGNORE
@@ -48,117 +50,127 @@ void setup()
 
     openknx.setup();
 
-// Button and LED test
-
 #ifdef FUNC1_BUTTON_PIN
     openknx.func1Button.onShortClick([]() -> void {
         func1test = !func1test;
         logInfo("ButtonTest", "Func1 button short click");
-        #ifdef INFO1_LED_PIN
+    #ifdef INFO1_LED_PIN
         openknx.info1Led.on(func1test);
-        #endif
+    #endif
     });
     openknx.func1Button.onDoubleClick([]() -> void {
         logInfo("ButtonTest", "Func1 button double click");
-        #ifdef INFO1_LED_PIN
+    #ifdef INFO1_LED_PIN
         openknx.info1Led.pulsing();
-        #endif
+    #endif
     });
     openknx.func1Button.onLongClick([]() -> void {
         logInfo("ButtonTest", "Func1 button long click");
-        #ifdef INFO1_LED_PIN
+    #ifdef INFO1_LED_PIN
         openknx.info1Led.blinking();
-        #endif
+    #endif
     });
 #endif
 #ifdef FUNC2_BUTTON_PIN
     openknx.func2Button.onShortClick([]() -> void {
         func2test = !func2test;
         logInfo("ButtonTest", "Func2 button short click");
-        #ifdef INFO2_LED_PIN
+    #ifdef INFO2_LED_PIN
         openknx.info2Led.on(func2test);
-        #endif
+    #endif
     });
     openknx.func2Button.onDoubleClick([]() -> void {
         logInfo("ButtonTest", "Func2 button double click");
-        #ifdef INFO2_LED_PIN
+    #ifdef INFO2_LED_PIN
         openknx.info2Led.pulsing();
-        #endif
+    #endif
     });
     openknx.func2Button.onLongClick([]() -> void {
         logInfo("ButtonTest", "Func2 button long click");
-        #ifdef INFO2_LED_PIN
+    #ifdef INFO2_LED_PIN
         openknx.info2Led.blinking();
-        #endif
+    #endif
     });
 #endif
 #ifdef FUNC3_BUTTON_PIN
     openknx.func3Button.onShortClick([]() -> void {
         func3test = !func3test;
         logInfo("ButtonTest", "Func3 button short click");
-        #ifdef INFO3_LED_PIN
+    #ifdef INFO3_LED_PIN
         openknx.info3Led.on(func3test);
-        #endif
+    #endif
     });
     openknx.func3Button.onDoubleClick([]() -> void {
         logInfo("ButtonTest", "Func3 button double click");
-        #ifdef INFO3_LED_PIN
+    #ifdef INFO3_LED_PIN
         openknx.info3Led.pulsing();
-        #endif
+    #endif
     });
     openknx.func3Button.onLongClick([]() -> void {
         logInfo("ButtonTest", "Func3 button long click");
-        #ifdef INFO3_LED_PIN
+    #ifdef INFO3_LED_PIN
         openknx.info3Led.blinking();
-        #endif
+    #endif
     });
 #endif
 
     // openknx.progLed.off();
     // openknx.progLed.on();
     // openknx.progLed.blinking();
-     openknx.progLed.pulsing();
-     openknx.info1Led.pulsing();
-     openknx.info2Led.pulsing();
-     openknx.info3Led.pulsing();
+    openknx.progLed.pulsing();
+    // openknx.progLed.brightness(60);
 
+#ifdef INFO1_LED_PIN
+    openknx.info1Led.pulsing();
+// openknx.info1Led.brightness(60);
+#endif
+#ifdef INFO2_LED_PIN
+    openknx.info2Led.pulsing();
+// openknx.info2Led.brightness(60);
+#endif
+#ifdef INFO3_LED_PIN
+    openknx.info3Led.pulsing();
+// openknx.info3Led.brightness(60);
+#endif
+    // openknx.timerInterrupt.interrupt();
     // #ifdef FORCE_ACK
     //     knx.bau().getDataLinkLayer()->forceAck(true);
     // #endif
-    pinMode(20, OUTPUT);
 }
+
+#ifdef OKNXHW_REG1_BASE_V1
+#endif
 
 void loop()
 {
-    //openknx.ledManager.writeLeds();
-        delay(2);
+    // openknx.ledManager.writeLeds();
     openknx.loop();
     if (delayCheck(_debugCore0, 100))
     {
-        openknx.ledManager.writeLeds();
-        // #if MASK_VERSION == 0x07B0
-        //         TpUartDataLinkLayer *dll = knx.bau().getDataLinkLayer();
-        // #endif
-        // #if defined(ARDUINO_ARCH_RP2040) && defined(USE_TP_RX_QUEUE)
-        //         if (false)
-        //         {
-        //             uint32_t start = millis();
-        //             logInfo("Erase", "Start");
-        //             logIndentUp();
-        //             for (size_t i = 0x00090000; i <= 0x0009F000; i += 0x1000)
-        //             {
-        //                 logInfo("Erase", "Block: %04X", i);
-        //                 noInterrupts();
-        //                 rp2040.idleOtherCore();
-        //                 flash_range_erase(i, 0x01000);
-        //                 rp2040.resumeOtherCore();
-        //                 interrupts();
-        //                 dll->processRxISR();
-        //             }
-        //             logIndentDown();
-        //             logInfo("Erase", "End %ims", (millis() - start));
-        //         }
-        // #endif
+        // openknx.ledManager.writeLeds();
+        //  #if MASK_VERSION == 0x07B0
+        //          TpUartDataLinkLayer *dll = knx.bau().getDataLinkLayer();
+        //  #endif
+        //  #if defined(ARDUINO_ARCH_RP2040) && defined(USE_TP_RX_QUEUE)
+        //          if (false)
+        //          {
+        //              uint32_t start = millis();
+        //              logInfo("Erase", "Start");
+        //              logIndentUp();
+        //              for (size_t i = 0x00090000; i <= 0x0009F000; i += 0x1000)
+        //              {
+        //                  logInfo("Erase", "Block: %04X", i);
+        //                  noInterrupts();
+        //                  rp2040.idleOtherCore();
+        //                  flash_range_erase(i, 0x01000);
+        //                  rp2040.resumeOtherCore();
+        //                  interrupts();
+        //                  dll->processRxISR();
+        //              }
+        //              logIndentDown();
+        //              logInfo("Erase", "End %ims", (millis() - start));
+        //          }
+        //  #endif
 
         // #if MASK_VERSION == 0x07B0
         //         logInfo("KNX", "Connected: %i - ProcessedFrames: %i - IgnoredFrames: %i - InvalidFrames: %i - UnknownControl: %i",
@@ -166,7 +178,7 @@ void loop()
         // #endif
 
         // openknx.console.showMemory();
-        //logInfo("-", "-");
+        // logInfo("-", "-");
         _debugCore0 = millis();
     }
     // delay(50);

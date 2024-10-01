@@ -1,7 +1,8 @@
 #pragma once
 
-
 #ifdef ARDUINO_ARCH_RP2040
+    #include "OpenKNXHardware.h"
+
     #ifdef BOARD_MASIFI_SENSOR_BREAKOUT
         // #define OPENKNX_RECOVERY_ON LOW
         #define PROG_LED_PIN 1
@@ -20,7 +21,6 @@
     // #define SmartMF_HardwareRevision_PIN3 12
     #endif
 
-    
     #ifdef BOARD_PIPICOW
         #define PROG_LED_PIN 32
         #define PROG_LED_PIN_ACTIVE_ON HIGH
@@ -47,6 +47,25 @@
         #define INFO_LED_PIN_ACTIVE_ON HIGH
         #define HARDWARE_NAME "WEMOS-MINI-D1"
     #endif
+
+    #ifdef BOARD_MASIFI_V3
+        #define PROG_LED_PIN 13
+        #define PROG_LED_PIN_ACTIVE_ON HIGH
+        #define PROG_BUTTON_PIN 11
+        #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
+        #define SAVE_INTERRUPT_PIN A2 // 8
+        #define INFO_LED_PIN 38
+        #define INFO_LED_PIN_ACTIVE_ON HIGH
+        #define COUNT_1WIRE_BUSMASTER 1
+        #define COUNT_1WIRE_CHANNEL 30
+        // #define COUNT_PM_CHANNEL 6
+        // #define COUNT_LOG_CHANNEL 80
+        // Buzzer
+        #define BUZZER_PIN 9
+        #define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
+        #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
+        #define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+    #endif
 #endif
 
 #ifdef ARDUINO_ARCH_ESP32
@@ -63,12 +82,12 @@
         #define PROG_BUTTON_PIN 4
         #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
 
-        #define ETH_PHY_TYPE        ETH_PHY_LAN8720
-        #define ETH_PHY_ADDR        1
-        #define ETH_PHY_MDC         23
-        #define ETH_PHY_MDIO        18
-        #define ETH_PHY_POWER       16
-        #define ETH_CLK_MODE        ETH_CLOCK_GPIO0_IN
+        #define ETH_PHY_TYPE ETH_PHY_LAN8720
+        #define ETH_PHY_ADDR 1
+        #define ETH_PHY_MDC 23
+        #define ETH_PHY_MDIO 18
+        #define ETH_PHY_POWER 16
+        #define ETH_CLK_MODE ETH_CLOCK_GPIO0_IN
 
         #define HARDWARE_NAME "ESP32_WT32_ETH01"
     #endif

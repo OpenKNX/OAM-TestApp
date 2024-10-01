@@ -9,14 +9,14 @@
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
 #define MAIN_OpenKnxId 0xAF
-#define MAIN_ApplicationNumber 253
-#define MAIN_ApplicationVersion 153
+#define MAIN_ApplicationNumber 254
+#define MAIN_ApplicationVersion 160
 #define MAIN_ParameterSize 5880
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "TESTAPP"
 #define BASE_ModuleVersion 18
 #define NET_ModuleVersion 3
-#define UCT_ModuleVersion 1
+#define UCT_ModuleVersion 2
 #define BTN_ModuleVersion 5
 #define LOG_ModuleVersion 51
 // Parameter with single occurrence
