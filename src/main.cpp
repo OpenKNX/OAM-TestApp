@@ -117,7 +117,7 @@ void setup()
     // openknx.progLed.off();
     // openknx.progLed.on();
     // openknx.progLed.blinking();
-    openknx.progLed.pulsing();
+    // openknx.progLed.pulsing();
     // openknx.progLed.brightness(60);
 
 #ifdef INFO1_LED_PIN
@@ -143,11 +143,9 @@ void setup()
 
 void loop()
 {
-    // openknx.ledManager.writeLeds();
     openknx.loop();
-    if (delayCheck(_debugCore0, 100))
+    if (delayCheck(_debugCore0, 1000))
     {
-        // openknx.ledManager.writeLeds();
         //  #if MASK_VERSION == 0x07B0
         //          TpUartDataLinkLayer *dll = knx.bau().getDataLinkLayer();
         //  #endif
