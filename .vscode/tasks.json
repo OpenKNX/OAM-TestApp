@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
         {
-            "label": "OpenKNXproducer (TP)",
+            "label": "OpenKNXproducer",
             "type": "shell",
             "command": "~/bin/OpenKNXproducer.exe",
             "args": [
@@ -10,35 +10,7 @@
                 "--Debug",
                 "-h",
                 "include/knxprod.h",
-                "src/TestAppTP"
-            ],
-            "problemMatcher": [],
-            "group": "test"
-        },
-        {
-            "label": "OpenKNXproducer (TPIP)",
-            "type": "shell",
-            "command": "~/bin/OpenKNXproducer.exe",
-            "args": [
-                "create",
-                "--Debug",
-                "-h",
-                "include/knxprod.h",
-                "src/TestAppTPIP"
-            ],
-            "problemMatcher": [],
-            "group": "test"
-        },
-        {
-            "label": "OpenKNXproducer (IP)",
-            "type": "shell",
-            "command": "~/bin/OpenKNXproducer.exe",
-            "args": [
-                "create",
-                "--Debug",
-                "-h",
-                "include/knxprod.h",
-                "src/TestAppIP"
+                "src/TestApp"
             ],
             "problemMatcher": [],
             "group": "test"
