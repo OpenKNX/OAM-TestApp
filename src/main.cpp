@@ -36,7 +36,7 @@ bool core1_separate_stack = true;
 
 void setup()
 {
-    const uint8_t firmwareRevision = 10;
+    const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
     // openknx.addModule(1, openknxLogic);
     // openknx.addModule(2, openknxDummyModule);
@@ -138,14 +138,14 @@ void setup()
     openknx.info3Led.pulsing();
 // openknx.info3Led.brightness(60);
 #endif
-
+/*
     openknxNetwork.mqtt.subscribe("awtrix_a92888/#", [](const char *topic, const void *payload, size_t payload_size) {
         logInfo("MQTT1", "Received message on Test1 topic: %s", topic);
     });
     openknxNetwork.mqtt.subscribe("awtrix_a92888/+/pv", [](const char *topic, const void *payload, size_t payload_size) {
         logInfo("MQTT2", "Received message on Test2 topic: %s", topic);
     });
-
+*/
 }
 
 void loop()
@@ -153,8 +153,8 @@ void loop()
     if (delayCheck(_debugCore0, 10000))
     {
         _debugCore0 = millis();
-        openknxNetwork.mqtt.publish("info", "Hello World");
-        openknxNetwork.mqtt.publishP("info", "Hello World");
+        //openknxNetwork.mqtt.publish("info", "Hello World");
+        //openknxNetwork.mqtt.publishP("info", "Hello World");
     }
 
     openknx.loop();

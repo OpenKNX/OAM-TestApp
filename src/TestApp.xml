@@ -16,9 +16,9 @@
 
   <op:ETS
     OpenKnxId="0xAF"
-    ApplicationNumber="255"
-    ApplicationVersion="6"
-    ReplacesVersions="5 4 3 2 1 0"
+    ApplicationNumber="137"
+    ApplicationVersion="1"
+    ReplacesVersions="0"
     ApplicationRevision="0"
     ProductName="TestApp"
     BusCurrent="10"
