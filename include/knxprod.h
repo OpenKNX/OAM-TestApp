@@ -8,9 +8,13 @@
             (time & 0xC000) == 0x8000 ? ((time & 0x3FFF) > 1000 ? 3600000 : \
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
+#ifndef FIRMWARE_NAME
+    #define FIRMWARE_NAME "TestApp"
+#endif
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 255
 #define MAIN_ApplicationVersion 6
+#define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 6087
 #define MAIN_MaxKoNumber 399
 #define MAIN_OrderNumber "TESTAPP"

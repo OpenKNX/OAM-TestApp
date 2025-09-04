@@ -1,4 +1,18 @@
 #pragma once
+
+#ifdef DEVICE_REG1_BASE_RGB
+    #define DEVICE_ID "REG1-Base-RGB"
+    #define DEVICE_NAME "OpenKNX REG1 Basismodul RGB"
+
+    #define OKNXHW_REG1_CONTROLLER2040_V1
+
+    #define OKNXHW_REG1_FRONT_RGB
+
+    #define OKNXHW_REG1_SENSOR_SDA_TX_PIN (8) // RP2040 GPIO 8 / SPI1 RX / UART1 TX / I2C0 SDA / PWM4 A
+    #define OKNXHW_REG1_SENSOR_SCL_RX_PIN (9) // RP2040 GPIO 9 / SPI1 CSn / UART1 RX / I2C0 SCL / PWM4 B
+
+#endif
+
 #include "HardwareConfig.h"
 
 #ifdef ARDUINO_ARCH_RP2040
