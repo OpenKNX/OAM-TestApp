@@ -37,16 +37,56 @@ bool core1_separate_stack = true;
 void setup()
 {
 #ifdef OPENKNX_LED_NO_AUTOCONF
-    #ifdef OPENKNX_SERIALLED_ENABLE
-    openknx.leds.addLed(new OpenKNX::Led::Serial(0, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_PROG);
-    openknx.leds.addLed(new OpenKNX::Led::Serial(1, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO1);
-    openknx.leds.addLed(new OpenKNX::Led::Serial(2, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO2);
-    openknx.leds.addLed(new OpenKNX::Led::Serial(3, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO3);
+    #ifdef LED_AUTODETECT
+
+        // delay(3000);
+        // while(true)
+        // {
+        //     pinMode(6, INPUT);
+        //     Serial.printf("Pin 6 state mode INPUT %d\n", digitalRead(6));
+        //     pinMode(6, INPUT_PULLUP);
+        //     Serial.printf("Pin 6 state mode INPUT_PULLUP %d\n", digitalRead(6));
+        //     pinMode(6, INPUT_PULLDOWN);
+        //     Serial.printf("Pin 6 state mode INPUT_PULLDOWN %d\n", digitalRead(6));
+
+        //     pinMode(22, INPUT);
+        //     Serial.printf("Pin 22 state mode INPUT %d\n", digitalRead(22));
+        //     pinMode(22, INPUT_PULLUP);
+        //     Serial.printf("Pin 22 state mode INPUT_PULLUP %d\n", digitalRead(22));
+        //     pinMode(22, INPUT_PULLDOWN);
+        //     Serial.printf("Pin 22 state mode INPUT_PULLDOWN %d\n", digitalRead(22));
+
+        //     Serial.println("Done, please restart");
+        //     delay(2000);
+        // }
+
+        pinMode(22, INPUT);
+        if(digitalRead(22))
+        {
+            openknx.leds.addLed(new OpenKNX::Led::Serial(0, PROG_LED_PIN, 30, 0, 0), OpenKNX::Led::LED_TYPE_PROG);
+            openknx.leds.addLed(new OpenKNX::Led::Serial(1, PROG_LED_PIN, 20, 0, 20), OpenKNX::Led::LED_TYPE_INFO1);
+            openknx.leds.addLed(new OpenKNX::Led::Serial(2, PROG_LED_PIN, 0, 20, 20), OpenKNX::Led::LED_TYPE_INFO2);
+            openknx.leds.addLed(new OpenKNX::Led::Serial(3, PROG_LED_PIN, 20, 20, 0), OpenKNX::Led::LED_TYPE_INFO3);
+        }
+        else
+        {
+            openknx.leds.addLed(new OpenKNX::Led::GPIO(PROG_LED_PIN, PROG_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_PROG);
+            openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO1_LED_PIN, INFO1_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO1);
+            openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO2_LED_PIN, INFO2_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO2);
+            openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO3_LED_PIN, INFO3_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO3);
+        }
     #else
-    openknx.leds.addLed(new OpenKNX::Led::GPIO(PROG_LED_PIN, PROG_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_PROG);
-    openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO1_LED_PIN, INFO1_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO1);
-    openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO2_LED_PIN, INFO2_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO2);
-    openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO3_LED_PIN, INFO3_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO3);
+        #ifdef OPENKNX_SERIALLED_ENABLE
+        openknx.leds.addLed(new OpenKNX::Led::Serial(0, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_PROG);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(1, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO1);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(2, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO2);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(3, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO3);
+        #else
+        openknx.leds.addLed(new OpenKNX::Led::GPIO(PROG_LED_PIN, PROG_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_PROG);
+        openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO1_LED_PIN, INFO1_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO1);
+        openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO2_LED_PIN, INFO2_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO2);
+        openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO3_LED_PIN, INFO3_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO3);
+        #endif
     #endif
 #endif
 
@@ -81,7 +121,7 @@ void setup()
     openknx.func1Button.onDoubleClick([]() -> void {
         logInfo("ButtonTest", "Func1 button double click");
     #ifdef INFO1_LED_PIN
-        openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->pulsing();
+        openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->pulsing();
     #endif
     });
     openknx.func1Button.onLongClick([]() -> void {
@@ -150,7 +190,7 @@ void setup()
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->brightness(60);
 #endif
 #ifdef INFO3_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->blinking();
+    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->pulsing();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->brightness(60);
 #endif
 
