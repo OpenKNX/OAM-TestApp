@@ -175,22 +175,22 @@ void setup()
     });
 #endif
 */
-    // openknx.progLed.off();
-    // openknx.progLed.on();
-    // openknx.progLed.blinking();
-    // openknx.progLed.pulsing();
-    // openknx.progLed.brightness(60);
+    // openknx.leds.getProgLed()->off();
+    // openknx.leds.getProgLed()->on();
+    // openknx.leds.getProgLed()->blinking();
+    // openknx.leds.getProgLed()->pulsing();
+    // openknx.leds.getProgLed()->brightness(60);
 
 #ifdef INFO1_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->pulsing();
+    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->on();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->brightness(60);
 #endif
 #ifdef INFO2_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->pulsing();
+    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->on();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->brightness(60);
 #endif
 #ifdef INFO3_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->pulsing();
+    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->on();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->brightness(60);
 #endif
 
