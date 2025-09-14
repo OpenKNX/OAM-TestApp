@@ -14,11 +14,21 @@
   <op:config name="%LOG_NumChannelsDefault%" value="5" />
   <op:config name="%DMY_NumChannelsDefault%" value="5" />
 
+  <op:config name="%SLEDdefaultName1%" value="Wippe Links"></op:config>
+  <op:config name="%SLEDdefaultName2%" value="Wippe Rechts"></op:config>
+  <op:config name="%SLEDdefaultName3%" value="Erweiterung Wippe Links"></op:config>
+  <op:config name="%SLEDdefaultName4%" value="Erweiterung Wippe Rechts"></op:config>
+
+  <op:config name="%SLEDdefaultType1%" value="1"></op:config>
+  <op:config name="%SLEDdefaultType2%" value="1"></op:config>
+  <op:config name="%SLEDdefaultType3%" value="1"></op:config>
+  <op:config name="%SLEDdefaultType4%" value="1"></op:config>
+
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="255"
-    ApplicationVersion="6"
-    ReplacesVersions="5 4 3 2 1 0"
+    ApplicationVersion="10"
+    ReplacesVersions="9 8 7 6 5 4 3 2 1 0"
     ApplicationRevision="0"
     ProductName="TestApp"
     BusCurrent="10"
@@ -59,6 +69,13 @@
     template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml"
     NumChannels="20" KoOffset="340">
     <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="3.7" /> 
+  </op:define>
+
+    <op:define prefix="SLED" ModuleType="40"
+    share="../lib/OFM-StatusLED/src/StatusLED.share.xml"
+    template="../lib/OFM-StatusLED/src/StatusLED.templ.xml"
+    NumChannels="4" KoOffset="400">
+    <op:verify File="../lib/OFM-StatusLED/library.json" ModuleVersion="0.1" />
   </op:define>
 
   <generate />

@@ -3,6 +3,7 @@
 #include "Logic.h"
 #include "OpenKNX.h"
 #include "VirtualButtonModule.h"
+#include "StatusLEDModule.h"
 // #include <async_http_client.h>
 
 #ifdef ARDUINO_ARCH_RP2040
@@ -90,13 +91,15 @@ void setup()
     #endif
 #endif
 
+
     const uint8_t firmwareRevision = 10;
     openknx.init(firmwareRevision);
-    // openknx.addModule(1, openknxLogic);
-    // openknx.addModule(2, openknxDummyModule);
-    // #ifndef ARDUINO_ARCH_SAMD
-    //     openknx.addModule(3, openknxVirtualButtonModule);
-    // #endif
+    openknx.addModule(1, openknxLogic);
+    openknx.addModule(2, openknxDummyModule);
+    #ifndef ARDUINO_ARCH_SAMD
+        openknx.addModule(3, openknxVirtualButtonModule);
+    #endif
+    openknx.addModule(4, openknxStatusLEDModule);
 
 #if defined(KNX_IP_LAN) || defined(KNX_IP_WIFI)
     openknx.addModule(7, openknxNetwork);
