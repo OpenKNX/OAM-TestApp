@@ -78,10 +78,10 @@ void setup()
         }
     #else
         #ifdef OPENKNX_SERIALLED_ENABLE
-        openknx.leds.addLed(new OpenKNX::Led::Serial(0, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_PROG);
-        openknx.leds.addLed(new OpenKNX::Led::Serial(1, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO1);
-        openknx.leds.addLed(new OpenKNX::Led::Serial(2, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO2);
-        openknx.leds.addLed(new OpenKNX::Led::Serial(3, PROG_LED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO3);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(PROG_LED_PIN, OPENKNX_SERIALLED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_PROG);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO1_LED_PIN, OPENKNX_SERIALLED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO1);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO2_LED_PIN, OPENKNX_SERIALLED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO2);
+        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO3_LED_PIN, OPENKNX_SERIALLED_PIN, 30, 30, 30), OpenKNX::Led::LED_TYPE_INFO3);
         #else
         openknx.leds.addLed(new OpenKNX::Led::GPIO(PROG_LED_PIN, PROG_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_PROG);
         openknx.leds.addLed(new OpenKNX::Led::GPIO(INFO1_LED_PIN, INFO1_LED_PIN_ACTIVE_ON), OpenKNX::Led::LED_TYPE_INFO1);
@@ -94,6 +94,7 @@ void setup()
 
     const uint8_t firmwareRevision = 10;
     openknx.init(firmwareRevision);
+
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxDummyModule);
     #ifndef ARDUINO_ARCH_SAMD
@@ -185,19 +186,19 @@ void setup()
     // openknx.leds.getProgLed()->brightness(60);
 
 #ifdef INFO1_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->on();
+    //openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->on();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->brightness(60);
 #endif
 #ifdef INFO2_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->on();
+    //openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->on();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->brightness(60);
 #endif
 #ifdef INFO3_LED_PIN
-    openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->on();
+    //openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->on();
 // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->brightness(60);
 #endif
 
-openknx.leds.getProgLed()->pulsing();
+//openknx.leds.getProgLed()->pulsing();
 
 }
 

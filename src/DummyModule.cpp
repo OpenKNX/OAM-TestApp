@@ -21,7 +21,7 @@ void DummyModule::setup(bool configured)
 
     if (configured)
     {
-        setupCustomFlash();
+        //setupCustomFlash();
         setupChannels();
     }
     logIndentDown();

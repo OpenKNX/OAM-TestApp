@@ -21,10 +21,10 @@
 #endif
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 255
-#define MAIN_ApplicationVersion 10
+#define MAIN_ApplicationVersion 21
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 6103
-#define MAIN_MaxKoNumber 407
+#define MAIN_MaxKoNumber 419
 #define MAIN_OrderNumber "TESTAPP"
 #define BASE_ModuleVersion 20
 #define NET_ModuleVersion 5
@@ -156,7 +156,7 @@
 #define ParamBASE_PeriodicSave                        (knx.paramByte(BASE_PeriodicSave))
 // Info1
 #define ParamBASE_Info1LedFunc                        (knx.paramWord(BASE_Info1LedFunc))
-// Info2
+// Info2 (Time)
 #define ParamBASE_Info2LedFunc                        (knx.paramWord(BASE_Info2LedFunc))
 // Info3
 #define ParamBASE_Info3LedFunc                        (knx.paramWord(BASE_Info3LedFunc))
@@ -3185,44 +3185,107 @@
 #define SLED_ParamBlockSize 2
 #define SLED_ParamCalcIndex(index) (index + SLED_ParamBlockOffset + _channelIndex * SLED_ParamBlockSize)
 
-#define SLED_Type_                                0      // 4 Bits, Bit 7-4
-#define     SLED_Type_Mask 0xF0
-#define     SLED_Type_Shift 4
-#define SLED_ColorOff_                            1      // 24 Bits, Bit 31-8
+#define SLED_Mode_                                0      // 4 Bits, Bit 7-4
+#define     SLED_Mode_Mask 0xF0
+#define     SLED_Mode_Shift 4
+#define SLED_Func_                                1      // 16 Bits, Bit 15-0
+#define SLED_Type_                                0      // 4 Bits, Bit 3-0
+#define     SLED_Type_Mask 0x0F
+#define     SLED_Type_Shift 0
+#define SLED_DetailedControl_                     2      // 2 Bits, Bit 7-6
+#define     SLED_DetailedControl_Mask 0xC0
+#define     SLED_DetailedControl_Shift 6
+#define SLED_Prio1Active_                         1      // 2 Bits, Bit 3-2
+#define     SLED_Prio1Active_Mask 0x0C
+#define     SLED_Prio1Active_Shift 2
+#define SLED_Prio2Active_                         1      // 2 Bits, Bit 1-0
+#define     SLED_Prio2Active_Mask 0x03
+#define     SLED_Prio2Active_Shift 0
+#define SLED_ColorOff_                            3      // 24 Bits, Bit 31-8
 #define     SLED_ColorOff_Mask 0xFFFFFF00
 #define     SLED_ColorOff_Shift 8
-#define SLED_ColorOn_                             4      // 24 Bits, Bit 31-8
+#define SLED_ColorOn_                             6      // 24 Bits, Bit 31-8
 #define     SLED_ColorOn_Mask 0xFFFFFF00
 #define     SLED_ColorOn_Shift 8
-#define SLED_bMode                                7      // 16 Bits, Bit 15-0
+#define SLED_ColorPrio1_                          9      // 24 Bits, Bit 31-8
+#define     SLED_ColorPrio1_Mask 0xFFFFFF00
+#define     SLED_ColorPrio1_Shift 8
+#define SLED_ColorPrio2_                         12      // 24 Bits, Bit 31-8
+#define     SLED_ColorPrio2_Mask 0xFFFFFF00
+#define     SLED_ColorPrio2_Shift 8
+#define SLED_BrightnessOff_                      15      // uint8_t
+#define SLED_BrightnessOn_                       16      // uint8_t
+#define SLED_BrightnessPrio1_                    17      // uint8_t
+#define SLED_BrightnessPrio2_                    18      // uint8_t
+#define SLED_EffectOff_                          19      // 32 Bits, Bit 31-0
+#define SLED_EffectOn_                           23      // 32 Bits, Bit 31-0
+#define SLED_EffectPrio1_                        27      // 32 Bits, Bit 31-0
+#define SLED_EffectPrio2_                        31      // 32 Bits, Bit 31-0
 
+// Betriebsmodus
+#define ParamSLED_Mode_                               ((knx.paramByte(SLED_ParamCalcIndex(SLED_Mode_)) & SLED_Mode_Mask) >> SLED_Mode_Shift)
+// LED-Funktion
+#define ParamSLED_Func_                               (knx.paramWord(SLED_ParamCalcIndex(SLED_Func_)))
 // LED-Typ
-#define ParamSLED_Type_                               ((knx.paramByte(SLED_ParamCalcIndex(SLED_Type_)) & SLED_Type_Mask) >> SLED_Type_Shift)
+#define ParamSLED_Type_                               (knx.paramByte(SLED_ParamCalcIndex(SLED_Type_)) & SLED_Type_Mask)
+// Erweiterte KOs
+#define ParamSLED_DetailedControl_                    ((knx.paramByte(SLED_ParamCalcIndex(SLED_DetailedControl_)) & SLED_DetailedControl_Mask) >> SLED_DetailedControl_Shift)
+// Prio1 aktiv
+#define ParamSLED_Prio1Active_                        ((knx.paramByte(SLED_ParamCalcIndex(SLED_Prio1Active_)) & SLED_Prio1Active_Mask) >> SLED_Prio1Active_Shift)
+// Prio2 aktiv
+#define ParamSLED_Prio2Active_                        (knx.paramByte(SLED_ParamCalcIndex(SLED_Prio2Active_)) & SLED_Prio2Active_Mask)
 // Farbwert für AUS
 #define ParamSLED_ColorOff_                           ((knx.paramInt(SLED_ParamCalcIndex(SLED_ColorOff_)) & SLED_ColorOff_Mask) >> SLED_ColorOff_Shift)
 // Farbwert für AN
 #define ParamSLED_ColorOn_                            ((knx.paramInt(SLED_ParamCalcIndex(SLED_ColorOn_)) & SLED_ColorOn_Mask) >> SLED_ColorOn_Shift)
-// Betriebsmodus
-#define ParamSLED_bMode                               (knx.paramWord(SLED_ParamCalcIndex(SLED_bMode)))
+// Farbwert für Prio1
+#define ParamSLED_ColorPrio1_                         ((knx.paramInt(SLED_ParamCalcIndex(SLED_ColorPrio1_)) & SLED_ColorPrio1_Mask) >> SLED_ColorPrio1_Shift)
+// Farbwert für Prio2
+#define ParamSLED_ColorPrio2_                         ((knx.paramInt(SLED_ParamCalcIndex(SLED_ColorPrio2_)) & SLED_ColorPrio2_Mask) >> SLED_ColorPrio2_Shift)
+// Helligkeit für AUS
+#define ParamSLED_BrightnessOff_                      (knx.paramByte(SLED_ParamCalcIndex(SLED_BrightnessOff_)))
+// Helligkeit für AN
+#define ParamSLED_BrightnessOn_                       (knx.paramByte(SLED_ParamCalcIndex(SLED_BrightnessOn_)))
+// Helligkeit für Prio1
+#define ParamSLED_BrightnessPrio1_                    (knx.paramByte(SLED_ParamCalcIndex(SLED_BrightnessPrio1_)))
+// Helligkeit für Prio2
+#define ParamSLED_BrightnessPrio2_                    (knx.paramByte(SLED_ParamCalcIndex(SLED_BrightnessPrio2_)))
+// Effekt für AUS
+#define ParamSLED_EffectOff_                          (knx.paramInt(SLED_ParamCalcIndex(SLED_EffectOff_)))
+// Effekt für AN
+#define ParamSLED_EffectOn_                           (knx.paramInt(SLED_ParamCalcIndex(SLED_EffectOn_)))
+// Effekt für Prio1
+#define ParamSLED_EffectPrio1_                        (knx.paramInt(SLED_ParamCalcIndex(SLED_EffectPrio1_)))
+// Effekt für Prio2
+#define ParamSLED_EffectPrio2_                        (knx.paramInt(SLED_ParamCalcIndex(SLED_EffectPrio2_)))
 
 // deprecated
 #define SLED_KoOffset 400
 
 // Communication objects per channel (multiple occurrence)
 #define SLED_KoBlockOffset 400
-#define SLED_KoBlockSize 2
+#define SLED_KoBlockSize 5
 
 #define SLED_KoCalcNumber(index) (index + SLED_KoBlockOffset + _channelIndex * SLED_KoBlockSize)
 #define SLED_KoCalcIndex(number) ((number >= SLED_KoCalcNumber(0) && number < SLED_KoCalcNumber(SLED_KoBlockSize)) ? (number - SLED_KoBlockOffset) % SLED_KoBlockSize : -1)
 #define SLED_KoCalcChannel(number) ((number >= SLED_KoBlockOffset && number < SLED_KoBlockOffset + SLED_ChannelCount * SLED_KoBlockSize) ? (number - SLED_KoBlockOffset) / SLED_KoBlockSize : -1)
 
 #define SLED_KoStatusLED_Switch_ 0
-#define SLED_KoStatusLED_Status_ 1
+#define SLED_KoStatusLED_Prio1_ 1
+#define SLED_KoStatusLED_Prio2_ 2
+#define SLED_KoStatusLED_BrightnessColor_ 3
+#define SLED_KoStatusLED_Effect_ 4
 
-// 
+// StatusLED %Z%
 #define KoSLED_StatusLED_Switch_                   (knx.getGroupObject(SLED_KoCalcNumber(SLED_KoStatusLED_Switch_)))
-// 
-#define KoSLED_StatusLED_Status_                   (knx.getGroupObject(SLED_KoCalcNumber(SLED_KoStatusLED_Status_)))
+// StatusLED %Z%
+#define KoSLED_StatusLED_Prio1_                    (knx.getGroupObject(SLED_KoCalcNumber(SLED_KoStatusLED_Prio1_)))
+// StatusLED %Z%
+#define KoSLED_StatusLED_Prio2_                    (knx.getGroupObject(SLED_KoCalcNumber(SLED_KoStatusLED_Prio2_)))
+// StatusLED %Z%
+#define KoSLED_StatusLED_BrightnessColor_          (knx.getGroupObject(SLED_KoCalcNumber(SLED_KoStatusLED_BrightnessColor_)))
+// StatusLED %Z%
+#define KoSLED_StatusLED_Effect_                   (knx.getGroupObject(SLED_KoCalcNumber(SLED_KoStatusLED_Effect_)))
 
 
 
