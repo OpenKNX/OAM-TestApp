@@ -92,7 +92,7 @@ void setup()
 #endif
 
 
-    const uint8_t firmwareRevision = 10;
+    const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
 
     openknx.addModule(1, openknxLogic);
