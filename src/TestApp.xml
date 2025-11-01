@@ -17,8 +17,8 @@
   <op:ETS
     OpenKnxId="0xAF"
     ApplicationNumber="255"
-    ApplicationVersion="6"
-    ReplacesVersions="5 4 3 2 1 0"
+    ApplicationVersion="0.7.0"
+    ReplacesVersions="6 5 4 3 2 1 0"
     ApplicationRevision="0"
     ProductName="TestApp"
     BusCurrent="10"
@@ -29,7 +29,7 @@
 
   <op:define prefix="BASE" ModuleType="10"
     share="../lib/OGM-Common/src/Common.share.xml" >
-    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="1.4" />
+    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="1.5" />
   </op:define>
 
   <op:define prefix="NET" ModuleType="11"
