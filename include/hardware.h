@@ -16,24 +16,24 @@
 #include "HardwareConfig.h"
 
 #ifdef DEVICE_REG1_LAN_TP_BASE
-    #define LED_INIT() \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(PROG_LED_PIN, OPENKNX_SERIALLED_PIN, PROG_LED_COLOR), OpenKNX::Led::LED_TYPE_PROG); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO1_LED_PIN, OPENKNX_SERIALLED_PIN, INFO1_LED_COLOR), OpenKNX::Led::LED_TYPE_INFO1); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO2_LED_PIN, OPENKNX_SERIALLED_PIN, INFO2_LED_COLOR), OpenKNX::Led::LED_TYPE_INFO2); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO3_LED_PIN, OPENKNX_SERIALLED_PIN, INFO3_LED_COLOR), OpenKNX::Led::LED_TYPE_INFO3); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(4, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(5, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER+1); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(6, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER+2); \
-        openknx.leds.addLed(new OpenKNX::Led::Serial(7, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER+3);
-        
-        #define OPENKNX_SLED_IDs 10,11,12,13
+    #define LED_INIT()                                                                                                                                 \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(PROG_LED_PIN, OPENKNX_SERIALLED_PIN, OpenKNX::Led::Color::Red), OpenKNX::Led::LED_TYPE_PROG);     \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO1_LED_PIN, OPENKNX_SERIALLED_PIN, OpenKNX::Led::Color::Green), OpenKNX::Led::LED_TYPE_INFO1); \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO2_LED_PIN, OPENKNX_SERIALLED_PIN, OpenKNX::Led::Color::Green), OpenKNX::Led::LED_TYPE_INFO2); \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(INFO3_LED_PIN, OPENKNX_SERIALLED_PIN, OpenKNX::Led::Color::Green), OpenKNX::Led::LED_TYPE_INFO3); \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(4, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER);                           \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(5, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER + 1);                       \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(6, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER + 2);                       \
+        openknx.leds.addLed(new OpenKNX::Led::Serial(7, OPENKNX_SERIALLED_PIN, 255, 255, 255), OpenKNX::Led::LED_TYPE_USER + 3);
+
+    #define OPENKNX_SLED_IDs 10, 11, 12, 13
 #endif
 
 #ifdef DEVICE_REG1_BASE
-        #define OPENKNX_SLED_IDs 16,17,18,26
-        #define OPENKNX_SERIALLED_COLOR_GREEN 0,0,0
-        #define OPENKNX_SERIALLED_COLOR_BLUE 0,0,0
-        #define OPENKNX_SERIALLED_COLOR_RED 0,0,0
+    #define OPENKNX_SLED_IDs 16, 17, 18, 26
+    #define OPENKNX_SERIALLED_COLOR_GREEN 0, 0, 0
+    #define OPENKNX_SERIALLED_COLOR_BLUE 0, 0, 0
+    #define OPENKNX_SERIALLED_COLOR_RED 0, 0, 0
 #endif
 
 #ifdef ARDUINO_ARCH_RP2040
