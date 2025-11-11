@@ -92,6 +92,11 @@ void setup()
     #endif
 #endif
 
+    openknx.leds.addLed(new OpenKNX::Led::GPIO(0x0100), 10);
+    openknx.leds.addLed(new OpenKNX::Led::GPIO(0x0101), 11);
+    openknx.leds.addLed(new OpenKNX::Led::GPIO(0x0102), 12);
+    openknx.leds.addLed(new OpenKNX::Led::GPIO(0x0103), 13);
+
     const uint8_t firmwareRevision = 0;
     openknx.init(firmwareRevision);
 
@@ -114,84 +119,8 @@ void setup()
 #endif
 
     openknx.setup();
-#ifdef FUNC1_BUTTON_PIN
-    openknx.func1Button.onShortClick([]() -> void {
-        func1test = !func1test;
-        logInfo("ButtonTest", "Func1 button short click");
-    #ifdef INFO1_LED_PIN
-        openknx.leds.getLed(10)->on(func1test);
-    #endif
-    });
-    openknx.func1Button.onDoubleClick([]() -> void {
-        logInfo("ButtonTest", "Func1 button double click");
-    #ifdef INFO1_LED_PIN
-        openknx.leds.getLed(10)->pulsing();
-    #endif
-    });
-    openknx.func1Button.onLongClick([]() -> void {
-        logInfo("ButtonTest", "Func1 button long click");
-    #ifdef INFO1_LED_PIN
-        openknx.leds.getLed(10)->blinking();
-    #endif
-    });
-#endif
-    /*
-    #ifdef FUNC2_BUTTON_PIN
-        openknx.func2Button.onShortClick([]() -> void {
-            func2test = !func2test;
-            logInfo("ButtonTest", "Func2 button short click");
-        #ifdef INFO2_LED_PIN
-            openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->on(func2test);
-        #endif
-        });
-        openknx.func2Button.onDoubleClick([]() -> void {
-            logInfo("ButtonTest", "Func2 button double click");
-        #ifdef INFO2_LED_PIN
-            openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->pulsing();
-        #endif
-        });
-        openknx.func2Button.onLongClick([]() -> void {
-            logInfo("ButtonTest", "Func2 button long click");
-        #ifdef INFO2_LED_PIN
-            openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->blinking();
-        #endif
-        });
-    #endif
-    #ifdef FUNC3_BUTTON_PIN
-        openknx.func3Button.onShortClick([]() -> void {
-            func3test = !func3test;
-            logInfo("ButtonTest", "Func3 button short click");
-        #ifdef INFO3_LED_PIN
-            openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->on(func3test);
-        #endif
-        });
-        openknx.func3Button.onDoubleClick([]() -> void {
-            logInfo("ButtonTest", "Func3 button double click");
-        #ifdef INFO3_LED_PIN
-            openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->pulsing();
-        #endif
-        });
-        openknx.func3Button.onLongClick([]() -> void {
-            logInfo("ButtonTest", "Func3 button long click");
-        #ifdef INFO3_LED_PIN
-            openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->blinking();
-        #endif
-        });
-    #endif
-    */
 
-#ifdef INFO1_LED_PIN
-    // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->on();
-// openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO1)->brightness(60);
-#endif
-#ifdef INFO2_LED_PIN
-    // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->on();
-// openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO2)->brightness(60);
-#endif
-#ifdef INFO3_LED_PIN
-    // openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->on();
-// openknx.leds.getLed(OpenKNX::Led::LED_TYPE_INFO3)->brightness(60);
-#endif
+
 }
 
 void loop()

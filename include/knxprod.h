@@ -19,7 +19,7 @@
 #define MAIN_FirmwareName "TestApp"
 #define MAIN_OpenKnxId 0xAF
 #define MAIN_ApplicationNumber 255
-#define MAIN_ApplicationVersion 23
+#define MAIN_ApplicationVersion 25
 #define MAIN_ApplicationEncoding iso-8859-15
 #define MAIN_ParameterSize 6168
 #define MAIN_MaxKoNumber 419
@@ -85,9 +85,9 @@
 #define     BASE_ManualSaveMask 0x07
 #define     BASE_ManualSaveShift 0
 #define BASE_PeriodicSave                        79      // 8 Bits, Bit 7-0
-#define BASE_Info1LedFunc                        80      // 16 Bits, Bit 15-0
-#define BASE_Info2LedFunc                        82      // 16 Bits, Bit 15-0
-#define BASE_Info3LedFunc                        84      // 16 Bits, Bit 15-0
+#define BASE_Info1LedFunc                        80      // 32 Bits, Bit 31-0
+#define BASE_Info2LedFunc                        84      // 32 Bits, Bit 31-0
+#define BASE_Info3LedFunc                        88      // 32 Bits, Bit 31-0
 #define BASE_Dummy                               109      // uint8_t
 #define BASE_ModuleEnabled_NET                   110      // 1 Bit, Bit 6
 #define     BASE_ModuleEnabled_NETMask 0x40
@@ -153,11 +153,11 @@
 // Zyklisches speichern
 #define ParamBASE_PeriodicSave                        (knx.paramByte(BASE_PeriodicSave))
 // Info1
-#define ParamBASE_Info1LedFunc                        (knx.paramWord(BASE_Info1LedFunc))
+#define ParamBASE_Info1LedFunc                        (knx.paramInt(BASE_Info1LedFunc))
 // Info2 (Time)
-#define ParamBASE_Info2LedFunc                        (knx.paramWord(BASE_Info2LedFunc))
+#define ParamBASE_Info2LedFunc                        (knx.paramInt(BASE_Info2LedFunc))
 // Info3
-#define ParamBASE_Info3LedFunc                        (knx.paramWord(BASE_Info3LedFunc))
+#define ParamBASE_Info3LedFunc                        (knx.paramInt(BASE_Info3LedFunc))
 // 
 #define ParamBASE_Dummy                               (knx.paramByte(BASE_Dummy))
 // NET
@@ -3156,7 +3156,7 @@
 #define SLED_Mode_                                0      // 4 Bits, Bit 7-4
 #define     SLED_Mode_Mask 0xF0
 #define     SLED_Mode_Shift 4
-#define SLED_Func_                                1      // 16 Bits, Bit 15-0
+#define SLED_Func_                                1      // 32 Bits, Bit 31-0
 #define SLED_Type_                                0      // 4 Bits, Bit 3-0
 #define     SLED_Type_Mask 0x0F
 #define     SLED_Type_Shift 0
@@ -3193,7 +3193,7 @@
 // Betriebsmodus
 #define ParamSLED_Mode_                               ((knx.paramByte(SLED_ParamCalcIndex(SLED_Mode_)) & SLED_Mode_Mask) >> SLED_Mode_Shift)
 // LED-Funktion
-#define ParamSLED_Func_                               (knx.paramWord(SLED_ParamCalcIndex(SLED_Func_)))
+#define ParamSLED_Func_                               (knx.paramInt(SLED_ParamCalcIndex(SLED_Func_)))
 // LED-Typ
 #define ParamSLED_Type_                               (knx.paramByte(SLED_ParamCalcIndex(SLED_Type_)) & SLED_Type_Mask)
 // Erweiterte KOs
